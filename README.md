@@ -279,16 +279,12 @@ From **PC3**, send an ICMP ping to PC1:
 ping 10.1.1.10
 ```
 
-**Expected Result:**
+**Result:**
+<img width="1830" height="810" alt="Screenshot 2026-10-01 184924" src="https://github.com/user-attachments/assets/13bb7177-712b-4858-b175-3b67dc371e8d" />
+<br>
+<br>
 
-```text
-PC3> ping 10.1.1.10
 
-84 bytes from 10.1.1.10 icmp_seq=1 ttl=... time=...
-84 bytes from 10.1.1.10 icmp_seq=2 ttl=... time=...
-84 bytes from 10.1.1.10 icmp_seq=3 ttl=... time=...
-84 bytes from 10.1.1.10 icmp_seq=4 ttl=... time=...
-```
 
 Successful replies confirm that **PC3 can communicate with PC1 across different IP networks through the OSPF-routed topology**.
 
@@ -305,20 +301,6 @@ The successful ping verifies the complete forwarding path:
 **PC3 → R3 → OSPF-Routed Network → R2 → PC1**
 
 It confirms that the **20.1.1.0/24** and **10.1.1.0/24** networks are reachable through the configured routing infrastructure and that end-to-end ICMP communication is working correctly.
-
-```
-
-### Recommended section title
-
-I would use:
-
-**`🔹 Phase 2 — Inter-LAN Connectivity Verification`**
-
-rather than simply “Ping Test,” because it clearly communicates **what networking concept you are validating**, which looks more professional in a portfolio.
-```
-
-
-
 
 
 
