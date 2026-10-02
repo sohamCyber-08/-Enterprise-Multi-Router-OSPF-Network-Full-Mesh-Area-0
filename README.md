@@ -403,24 +403,26 @@ The ip helper-address command enables R2 to forward DHCP requests received from 
 ⚙️ R3 — DHCP Relay Agent
 
 R3 provides connectivity to the 20.1.1.0/24 LAN containing PC3.
-
+```cisco
 interface g0/3
  ip helper-address 30.1.1.100
  no shutdown
 end
 write memory
+```
 
 R3 forwards DHCP requests from the 20.1.1.0/24 network toward the centralized DHCP server.
 
 ⚙️ R4 — DHCP Relay Agent
 
 R4 provides connectivity to the 30.1.1.0/24 LAN containing PC4 and the centralized DHCP server.
-
+```cisco
 interface g0/3
  ip helper-address 30.1.1.100
  no shutdown
 end
 write memory
+```
 
 Note: The DHCP server 30.1.1.100 and PC4 are on the same 30.1.1.0/24 LAN, so a DHCP relay is not technically required for PC4. The relay configuration is retained as part of this lab's router configuration.
 
