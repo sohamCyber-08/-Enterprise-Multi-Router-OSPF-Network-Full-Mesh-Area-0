@@ -228,7 +228,8 @@ show ip ospf
 | **R4** |      ✅     |     ✅    |      ✅      |       ✅      |
 <br>
 <br>
-```
+
+```mermaid
 flowchart TD
     A[Start Network Configuration] --> B[Configure R1 Interfaces]
     B --> C[Configure R2 Interfaces]
