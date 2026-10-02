@@ -74,130 +74,198 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 
 
+Yes. The main issue is that your current README has **inconsistent spacing and heading levels**. For a professional GitHub repository, keep each router section in the same structure:
+
+**Router → Objective → Configuration screenshots → Verification → Verification screenshot → next router**
+
+I would also avoid excessive `<br>` tags. A few blank lines are enough in GitHub Markdown.
+
+Here is your **copy-paste-ready version**:
+
+````markdown
 # 🛠️ TASK TO PERFORM
 
 ## 🔹 Phase 1 — Basic Interface & OSPF Configuration
+
+---
 
 ### 📍 1.1 R1 — Interface & OSPF Configuration
 
 **Objective**
 
 Configure R1's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
-<br>
-<br>
-<img width="1906" height="843" alt="Screenshot 2026-10-01 183548" src="https://github.com/user-attachments/assets/56b18ab4-12ac-4a6f-93ca-0bb61af26245" />
-<br>
-<br>
-<img width="1900" height="980" alt="Screenshot 2026-10-01 183600" src="https://github.com/user-attachments/assets/09ec883d-4594-4097-9889-9a7eeaa572cc" />
-<br>
+
+#### ⚙️ Interface & OSPF Configuration
+
+<img width="1906" height="843" alt="R1 Interface Configuration" src="https://github.com/user-attachments/assets/56b18ab4-12ac-4a6f-93ca-0bb61af26245" />
+
 <br>
 
-## 🔍 Verification
-```cisco
-sh ip int brief
-```
+<img width="1900" height="980" alt="R1 OSPF Configuration" src="https://github.com/user-attachments/assets/09ec883d-4594-4097-9889-9a7eeaa572cc" />
+
 <br>
 
+#### 🔍 Verification
+
+**Interface Status**
+
 ```cisco
-sh ip ospf
+show ip interface brief
+````
+
+**OSPF Process**
+
+```cisco
+show ip ospf
 ```
-<br>
-<br>
-<img width="1772" height="878" alt="Screenshot 2026-10-01 183804" src="https://github.com/user-attachments/assets/2c92ef8f-3618-484c-8b3e-a9eb734e1532" />
-<br>
-<br>
+
+<img width="1772" height="878" alt="R1 OSPF Verification" src="https://github.com/user-attachments/assets/2c92ef8f-3618-484c-8b3e-a9eb734e1532" />
+
+---
+
 ### 📍 1.2 R2 — Interface & OSPF Configuration
 
 **Objective**
 
-Configure R2's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
-<br>
-<br>
-<img width="1715" height="683" alt="Screenshot 2026-10-01 183932" src="https://github.com/user-attachments/assets/6bc576a9-334f-4619-8e35-4f61a530abbf" />
-<br>
-<br>
-<img width="1696" height="995" alt="Screenshot 2026-10-01 183943" src="https://github.com/user-attachments/assets/cdac589f-4afb-4db4-9bd9-e638066bca4f" />
-<br>
-<br>
-## 🔍 Verification
-```cisco
-sh ip int brief
-```
+Configure R2's inter-router interfaces, LAN interface, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
+
+#### ⚙️ Interface & OSPF Configuration
+
+<img width="1715" height="683" alt="R2 Interface Configuration" src="https://github.com/user-attachments/assets/6bc576a9-334f-4619-8e35-4f61a530abbf" />
+
 <br>
 
+<img width="1696" height="995" alt="R2 OSPF Configuration" src="https://github.com/user-attachments/assets/cdac589f-4afb-4db4-9bd9-e638066bca4f" />
+
+<br>
+
+#### 🔍 Verification
+
+**Interface Status**
+
 ```cisco
-sh ip ospf
+show ip interface brief
 ```
-<br>
-<br>
-<img width="1716" height="641" alt="Screenshot 2026-10-01 184019" src="https://github.com/user-attachments/assets/bd3ed1fe-938e-45ac-961c-64e1e0f9b669" />
-<br>
-<br>
+
+**OSPF Process**
+
+```cisco
+show ip ospf
+```
+
+<img width="1716" height="641" alt="R2 OSPF Verification" src="https://github.com/user-attachments/assets/bd3ed1fe-938e-45ac-961c-64e1e0f9b669" />
+
+---
 
 ### 📍 1.3 R3 — Interface & OSPF Configuration
 
 **Objective**
 
-Configure R3's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
-<br>
-<br>
-<img width="1816" height="865" alt="Screenshot 2026-10-01 184200" src="https://github.com/user-attachments/assets/5a650a28-0fad-4aae-8b0a-95397734222b" />
+Configure R3's inter-router interfaces, LAN interface, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
+
+#### ⚙️ Interface & OSPF Configuration
+
+<img width="1816" height="865" alt="R3 Interface Configuration" src="https://github.com/user-attachments/assets/5a650a28-0fad-4aae-8b0a-95397734222b" />
 
 <br>
-<br>
-<img width="1881" height="1006" alt="Screenshot 2026-10-01 184133" src="https://github.com/user-attachments/assets/8e2b664f-1d9c-4168-a477-0cc4847b43d7" />
+
+<img width="1881" height="1006" alt="R3 OSPF Configuration" src="https://github.com/user-attachments/assets/8e2b664f-1d9c-4168-a477-0cc4847b43d7" />
 
 <br>
-<br>
-## 🔍 Verification
+
+#### 🔍 Verification
+
+**Interface Status**
+
 ```cisco
-sh ip int brief
+show ip interface brief
 ```
-<br>
+
+**OSPF Process**
 
 ```cisco
-sh ip ospf
+show ip ospf
 ```
-<br>
-<br>
-<img width="1595" height="696" alt="Screenshot 2026-10-01 184230" src="https://github.com/user-attachments/assets/f920afb6-7c54-44fa-b7a8-e807d94ff18b" />
-<br>
-<br>
 
+<img width="1595" height="696" alt="R3 OSPF Verification" src="https://github.com/user-attachments/assets/f920afb6-7c54-44fa-b7a8-e807d94ff18b" />
+
+---
 
 ### 📍 1.4 R4 — Interface & OSPF Configuration
 
 **Objective**
 
-Configure R4's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
-<br>
-<br>
-<img width="1682" height="647" alt="Screenshot 2026-10-01 184404" src="https://github.com/user-attachments/assets/b1fd38c1-028a-4a47-bbeb-753867517db5" />
+Configure R4's inter-router interfaces, LAN interface, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
 
+#### ⚙️ Interface & OSPF Configuration
 
-<br>
-<br>
-<img width="1691" height="771" alt="Screenshot 2026-10-01 184416" src="https://github.com/user-attachments/assets/e2dc7c50-b02a-4fb5-bd29-0eb0ff20a35b" />
-
+<img width="1682" height="647" alt="R4 Interface Configuration" src="https://github.com/user-attachments/assets/b1fd38c1-028a-4a47-bbeb-753867517db5" />
 
 <br>
+
+<img width="1691" height="771" alt="R4 OSPF Configuration" src="https://github.com/user-attachments/assets/e2dc7c50-b02a-4fb5-bd29-0eb0ff20a35b" />
+
 <br>
-## 🔍 Verification
+
+#### 🔍 Verification
+
+**Interface Status**
+
+```cisco
+show ip interface brief
+```
+
+**OSPF Process**
+
+```cisco
+show ip ospf
+```
+
+<img width="1731" height="703" alt="R4 OSPF Verification" src="https://github.com/user-attachments/assets/f7c60a24-c8ac-454b-a8ce-a3561b69a2c6" />
+
+---
+
+## ✅ Phase 1 — Completion Status
+
+| Router | Interfaces | Loopback | OSPF Area 0 | Verification |
+| :----: | :--------: | :------: | :---------: | :----------: |
+| **R1** |      ✅     |     ✅    |      ✅      |       ✅      |
+| **R2** |      ✅     |     ✅    |      ✅      |       ✅      |
+| **R3** |      ✅     |     ✅    |      ✅      |       ✅      |
+| **R4** |      ✅     |     ✅    |      ✅      |       ✅      |
+
+**Phase 1 Result:**
+All four routers have been configured with their required Layer 3 interfaces, Loopback interfaces, and OSPF Area 0 parameters. The topology is ready for OSPF neighbor establishment and subsequent DHCP Relay and SSH configuration phases.
+
+````
+
+### One important improvement
+
+I changed your R2/R3/R4 objectives from:
+
+> "inter-router interfaces, Loopback interface..."
+
+to:
+
+> **"inter-router interfaces, LAN interface, Loopback interface..."**
+
+because R2, R3, and R4 also have their respective **LAN-facing interfaces** (`G0/3`) in your topology. That makes the documentation technically more complete.
+
+Also, use the **full Cisco commands** in documentation:
+
+```cisco
+show ip interface brief
+show ip ospf
+````
+
+rather than:
+
 ```cisco
 sh ip int brief
-```
-<br>
-
-```cisco
 sh ip ospf
 ```
-<br>
-<br>
-<img width="1731" height="703" alt="Screenshot 2026-10-01 184743" src="https://github.com/user-attachments/assets/f7c60a24-c8ac-454b-a8ce-a3561b69a2c6" />
 
-<br>
-<br>
-
+Short commands are perfectly valid in the Cisco CLI, but full commands look more professional in a GitHub portfolio and are easier for another person to understand/copy.
 
 
 
