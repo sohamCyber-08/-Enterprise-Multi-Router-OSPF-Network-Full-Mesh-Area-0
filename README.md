@@ -74,15 +74,9 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 
 
-Yes. The main issue is that your current README has **inconsistent spacing and heading levels**. For a professional GitHub repository, keep each router section in the same structure:
 
-**Router → Objective → Configuration screenshots → Verification → Verification screenshot → next router**
 
-I would also avoid excessive `<br>` tags. A few blank lines are enough in GitHub Markdown.
 
-Here is your **copy-paste-ready version**:
-
-````markdown
 # 🛠️ TASK TO PERFORM
 
 ## 🔹 Phase 1 — Basic Interface & OSPF Configuration
@@ -121,7 +115,6 @@ show ip ospf
 
 <img width="1772" height="878" alt="R1 OSPF Verification" src="https://github.com/user-attachments/assets/2c92ef8f-3618-484c-8b3e-a9eb734e1532" />
 
----
 
 ### 📍 1.2 R2 — Interface & OSPF Configuration
 
