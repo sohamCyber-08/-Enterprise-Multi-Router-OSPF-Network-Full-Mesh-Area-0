@@ -16,11 +16,35 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 
 ## 🌐 IP Addressing
+## IP Addressing Plan
 
-| Device | IP Address | Subnet Mask |
-|---|---|---|
-| PC1 | 192.168.10.10 | 255.255.255.0 |
-| PC2 | 192.168.10.20 | 255.255.255.0 |
+### Inter-Router Links
+
+| Link | Network | R1 | R2 | R3 | R4 |
+|---|---|---|---|---|---|
+| R1 Gi0/0 ↔ R2 Gi0/0 | `12.1.1.0/30` | `12.1.1.1` | `12.1.1.2` | — | — |
+| R1 Gi0/1 ↔ R3 Gi0/1 | `13.1.1.0/30` | `13.1.1.1` | — | `13.1.1.2` | — |
+| R1 Gi0/2 ↔ R4 Gi0/1 | `14.1.1.0/30` | `14.1.1.1` | — | — | `14.1.1.2` |
+| R2 Gi0/1 ↔ R3 Gi0/0 | `23.1.1.0/30` | — | `23.1.1.1` | `23.1.1.2` | — |
+| R2 Gi0/2 ↔ R4 Gi0/2 | `24.1.1.0/30` | — | `24.1.1.1` | — | `24.1.1.2` |
+| R3 Gi0/2 ↔ R4 Gi0/0 | `34.1.1.0/30` | — | — | `34.1.1.1` | `34.1.1.2` |
+
+### LAN Segments
+
+| LAN Segment | Network | Gateway | Devices |
+|---|---|---|---|
+| R2 Gi0/3 ↔ SW1 | `10.1.1.0/24` | `10.1.1.1` (R2) | PC1, PC2 — DHCP |
+| R3 Gi0/3 ↔ SW2 | `20.1.1.0/24` | `20.1.1.1` (R3) | PC3 — DHCP |
+| R4 Gi0/3 ↔ SW3 | `30.1.1.0/24` | `30.1.1.1` (R4) | PC4, DHCP Server `30.1.1.100` |
+
+### Loopbacks & OSPF
+
+| Router | Loopback | OSPF Process ID | OSPF Router ID | Area |
+|---|---|---:|---|---|
+| R1 | `1.1.1.1/32` | 100 | `1.1.1.1` | Area 0 |
+| R2 | `2.2.2.2/32` | 200 | `2.2.2.2` | Area 0 |
+| R3 | `3.3.3.3/32` | 300 | `3.3.3.3` | Area 0 |
+| R4 | `4.4.4.4/32` | 400 | `4.4.4.4` | Area 0 |
 
 ## 🔧 Technologies
 
