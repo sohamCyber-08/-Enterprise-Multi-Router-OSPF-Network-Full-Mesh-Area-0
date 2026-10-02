@@ -304,6 +304,309 @@ It confirms that the **20.1.1.0/24** and **10.1.1.0/24** networks are reachable 
 
 
 
+
+
+For your repo, **Phase 3** can document the centralized DHCP design and the DHCP Relay Agent configuration. Since your DHCP server is `30.1.1.100`, and the clients in `10.1.1.0/24` and `20.1.1.0/24` are on different routed networks, R2 and R3 act as DHCP relay agents.
+
+## 🔹 Phase 3 — DHCP Relay Agent Configuration
+
+### 📍 1.1 Centralized DHCP Server
+
+#### 🎯 Objective
+
+Configure a centralized DHCP server at **`30.1.1.100`** to dynamically assign IPv4 addresses to clients located on different LAN networks.
+
+Because DHCP client requests are initially sent as **broadcasts** and routers do not forward broadcast traffic by default, **DHCP Relay Agent** functionality is required on the routers connecting the client LANs to the centralized DHCP server.
+
+#### 🌐 DHCP Network Design
+
+| LAN | Network | Default Gateway | DHCP Server |
+|:---:|:---:|:---:|:---:|
+| PC1 / PC2 | `10.1.1.0/24` | `10.1.1.1` | `30.1.1.100` |
+| PC3 | `20.1.1.0/24` | `20.1.1.1` | `30.1.1.100` |
+| PC4 | `30.1.1.0/24` | `30.1.1.1` | `30.1.1.100` |
+
+
+
+#### 🌐 DHCP Server Information
+
+| Parameter | Configuration |
+|:---|:---:|
+| **DHCP Server IP** | `30.1.1.100` |
+| **Server Network** | `30.1.1.0/24` |
+| **Default Gateway** | `30.1.1.1` |
+| **DHCP Service** | Enabled |
+| **Address Allocation** | Dynamic |
+
+#### ⚙️ DHCP Pool Configuration
+<br>
+<br>
+<img width="1686" height="691" alt="Screenshot 2026-10-01 185109" src="https://github.com/user-attachments/assets/5fce0da4-d1f6-4276-b930-d6ab2d9ae49c" />
+<br>
+<br>
+<img width="1791" height="692" alt="Screenshot 2026-10-01 185117" src="https://github.com/user-attachments/assets/58054a57-eaa4-4a3d-8f09-f2e8ab76ccbc" />
+<br>
+<br>
+
+#### 🔍 Verification
+
+**Interface Status**
+
+```cisco
+show ip interface brief
+```
+
+**DHCP pool**
+
+```cisco
+show ip dhcp pool
+```
+<br>
+<br>
+<img width="1390" height="877" alt="Screenshot 2026-10-01 185148" src="https://github.com/user-attachments/assets/b6188289-af59-40e1-aa7c-d9ace6e03090" />
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+### 📍 1.2 R2 — DHCP Relay Agent
+
+#### ⚙️ Configuration
+
+R2 connects the **10.1.1.0/24** client network to the centralized DHCP server.
+
+Configure the DHCP Relay Agent on the LAN-facing interface:
+
+#### ⚙️ R2 — DHCP Relay Agent
+
+R2 provides connectivity to the **10.1.1.0/24** LAN containing PC1.
+
+Configure the LAN-facing interface:
+
+
+interface g0/3
+ ip helper-address 30.1.1.100
+ no shutdown
+end
+write memory
+
+The ip helper-address command enables R2 to forward DHCP requests received from the 10.1.1.0/24 LAN toward the centralized DHCP server.
+
+⚙️ R3 — DHCP Relay Agent
+
+R3 provides connectivity to the 20.1.1.0/24 LAN containing PC3.
+
+interface g0/3
+ ip helper-address 30.1.1.100
+ no shutdown
+end
+write memory
+
+R3 forwards DHCP requests from the 20.1.1.0/24 network toward the centralized DHCP server.
+
+⚙️ R4 — DHCP Relay Agent
+
+R4 provides connectivity to the 30.1.1.0/24 LAN containing PC4 and the centralized DHCP server.
+
+interface g0/3
+ ip helper-address 30.1.1.100
+ no shutdown
+end
+write memory
+
+Note: The DHCP server 30.1.1.100 and PC4 are on the same 30.1.1.0/24 LAN, so a DHCP relay is not technically required for PC4. The relay configuration is retained as part of this lab's router configuration.
+
+
+<br>
+<br>
+<img width="1905" height="1011" alt="Screenshot 2026-10-01 185332" src="https://github.com/user-attachments/assets/577331cc-238f-4891-9216-da562fed8b34" />
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+```cisco
+interface g0/3
+ ip helper-address 30.1.1.100
+````
+
+The `ip helper-address` command forwards DHCP client requests received on the LAN interface toward the centralized DHCP server.
+
+#### 🔍 Verification
+
+```cisco
+show running-config interface g0/3
+```
+
+Expected configuration:
+
+```text
+interface GigabitEthernet0/3
+ ip address 10.1.1.1 255.255.255.0
+ ip helper-address 30.1.1.100
+```
+
+---
+
+### 📍 3.3 R3 — DHCP Relay Agent
+
+#### ⚙️ Configuration
+
+R3 connects the **20.1.1.0/24** client network to the centralized DHCP server.
+
+Configure the DHCP Relay Agent:
+
+```cisco
+interface g0/3
+ ip helper-address 30.1.1.100
+```
+
+#### 🔍 Verification
+
+```cisco
+show running-config interface g0/3
+```
+
+Expected configuration:
+
+```text
+interface GigabitEthernet0/3
+ ip address 20.1.1.1 255.255.255.0
+ ip helper-address 30.1.1.100
+```
+
+---
+
+### 📍 3.4 DHCP Relay Operation
+
+When a DHCP client starts without an IP address, the request follows this process:
+
+```text
+PC3
+20.1.1.10
+   │
+   │ DHCP Broadcast
+   ▼
+R3
+20.1.1.1
+   │
+   │ DHCP Relay
+   │ ip helper-address 30.1.1.100
+   ▼
+Routed Network
+   │
+   ▼
+DHCP Server
+30.1.1.100
+```
+
+The router receives the DHCP broadcast on the client-facing interface and forwards the request as a **unicast packet** toward the DHCP server.
+
+The DHCP server uses the relay information to determine which client subnet the request originated from and selects the appropriate DHCP pool.
+
+### 📍 3.5 DHCP Client Verification
+
+Configure the end hosts to obtain their IP addresses dynamically using DHCP.
+
+#### 🖥️ PC3 Verification
+
+```bash
+ip dhcp
+```
+
+Verify the assigned address:
+
+```bash
+show ip
+```
+
+Expected network:
+
+```text
+Network: 20.1.1.0/24
+Gateway: 20.1.1.1
+DHCP Server: 30.1.1.100
+```
+
+#### 🖥️ PC1 / PC2 Verification
+
+Verify that the clients receive addresses from the:
+
+```text
+10.1.1.0/24
+```
+
+network with:
+
+```text
+Gateway: 10.1.1.1
+DHCP Server: 30.1.1.100
+```
+
+### 🧪 End-to-End DHCP Validation
+
+| Client | Client Network |  Relay Agent |  DHCP Server | Status |
+| :----: | :------------: | :----------: | :----------: | :----: |
+|   PC1  |  `10.1.1.0/24` |      R2      | `30.1.1.100` |    ✅   |
+|   PC2  |  `10.1.1.0/24` |      R2      | `30.1.1.100` |    ✅   |
+|   PC3  |  `20.1.1.0/24` |      R3      | `30.1.1.100` |    ✅   |
+|   PC4  |  `30.1.1.0/24` | Not Required | `30.1.1.100` |    ✅   |
+
+> **Note:** R4 does not require `ip helper-address` because the DHCP server (`30.1.1.100`) and PC4 are already on the same `30.1.1.0/24` LAN. The DHCP broadcast can reach the server directly without crossing a Layer 3 boundary.
+
+### 🧠 Phase 3 Result
+
+The centralized DHCP server successfully provides dynamic IP addressing to clients across multiple routed LANs.
+
+The DHCP Relay Agent configured on **R2 and R3** enables DHCP broadcasts from remote client networks to reach the centralized DHCP server at **`30.1.1.100`**.
+
+This demonstrates centralized IP address management across the multi-router OSPF network.
+
+```
+
+**Phase 3 title:** `🔹 Phase 3 — DHCP Relay Agent Configuration`  
+**Main concept:** `DHCP Broadcast → Relay Agent → DHCP Server`
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 PC1 successfully pinged PC2.
 
 ### ARP Verification
