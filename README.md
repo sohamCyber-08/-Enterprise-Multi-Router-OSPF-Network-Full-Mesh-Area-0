@@ -470,25 +470,26 @@ PC4> ip dhcp
 📍 3.4 DHCP Address Allocation Verification
 
 Verify that the clients successfully receive addresses from their respective DHCP networks.
-```cisco
-Client	Network	Default Gateway	DHCP Server	Status
-PC1	10.1.1.0/24	10.1.1.1	30.1.1.100	✅
-PC3	20.1.1.0/24	20.1.1.1	30.1.1.100	✅
-PC4	30.1.1.0/24	30.1.1.1	30.1.1.100	✅
-```
+
+| Client | Network | Default Gateway | DHCP Server | Status |
+|:---:|:---:|:---:|:---:|:---:|
+| **PC1** | `10.1.1.0/24` | `10.1.1.1` | `30.1.1.100` | ✅ |
+| **PC3** | `20.1.1.0/24` | `20.1.1.1` | `30.1.1.100` | ✅ |
+| **PC4** | `30.1.1.0/24` | `30.1.1.1` | `30.1.1.100` | ✅ |
 
 📍 3.5 End-to-End Connectivity Testing
 
 After receiving their IP addresses through DHCP, verify connectivity between the dynamically addressed hosts.
 
 📊 Connectivity Verification
-```cisco
-Source	Destination	Test	Result
-PC3	PC1	ICMP Ping	✅
-PC4	PC1	ICMP Ping	✅
-PC1	PC3	ICMP Ping	✅
-PC1	PC4	ICMP Ping	✅
-```
+
+| Source | Destination | Test | Result |
+|:---:|:---:|:---:|:---:|
+| **PC3** | **PC1** | ICMP Ping | ✅ |
+| **PC4** | **PC1** | ICMP Ping | ✅ |
+| **PC1** | **PC3** | ICMP Ping | ✅ |
+| **PC1** | **PC4** | ICMP Ping | ✅ |
+
 
 RESULT:
 <img width="1723" height="1013" alt="Screenshot 2026-10-01 185734" src="https://github.com/user-attachments/assets/e69ae5ad-62b8-4b29-869d-d8e3feca8e41" />
