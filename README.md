@@ -325,11 +325,10 @@ Successful replies confirm that **PC3 can communicate with PC1 across different 
 | :-------------: | :-------------: | :------: | :----------: |
 | PC3 `20.1.1.10` | PC1 `10.1.1.10` |   ICMP   | ✅ Successful |
 
-
-
-
 <br>
 <br>
+
+
 ```mermaid
 flowchart TD
     A[PC3<br/>20.1.1.x] --> B[Default Gateway<br/>R3 - 20.1.1.1]
@@ -343,10 +342,8 @@ flowchart TD
     I --> J[PC1<br/>10.1.1.x]
     J --> K[ICMP Echo Reply]
     K --> L[Successful<br/>End-to-End Connectivity]
+
 ```
-
-
-
 
 
 
@@ -538,6 +535,24 @@ RESULT:
 <br>
 <br>
 
+```mermid
+flowchart TD
+    A[DHCP Client<br/>PC1 / PC3 / PC4] --> B[DHCP Discover<br/>Broadcast]
+    B --> C{DHCP Server<br/>Same LAN?}
+    C -->|No| D[DHCP Relay Agent]
+    C -->|Yes| E[Reach DHCP Server Directly]
+    D --> F[Forward DHCP Request]
+    F --> G[Centralized DHCP Server<br/>30.1.1.100]
+    E --> G
+    G --> H[Select Appropriate<br/>DHCP Pool]
+    H --> I[Offer IP Address]
+    I --> J[DHCP Request]
+    J --> K[DHCP ACK]
+    K --> L[Client Receives<br/>IP Configuration]
+    L --> M[IP Address + Subnet Mask<br/>Default Gateway]
+    M --> N[DHCP Address Allocation<br/>Successful]
+```
+
 
 ## 🔹 Phase 4 — SSH-Only Secure Remote Management
 
@@ -670,11 +685,28 @@ Verify SSH status and VTY configuration on R4.
 | **R3** | SSHv2 | Local User | SSH Only | ✅ |
 | **R4** | SSHv2 | Local User | SSH Only | ✅ |
 
+<br>
+<br>
+
+```mermid
+flowchart TD
+    A[Administrator] --> B[SSH Connection Request]
+    B --> C{Target Router}
+    C -->|R1| D[R1]
+    C -->|R2| E[R2]
+    C -->|R3| F[R3]
+    C -->|R4| G[R4]
+    D --> H[SSH Version 2]
+    E --> H
+    F --> H
+    G --> H
+    H --> I[Local User Authentication]
+    I --> J{Credentials Valid?}
+    J -->|Yes| K[Secure SSH Session]
+    J -->|No| L[Access Denied]
+    K --> M[Remote Router Management]
+```
 ### 🧪 SSH Connectivity Testing
-
-
-
-
 
 ### 🧠 Phase 4 Result
 
@@ -729,45 +761,7 @@ Remote management access is restricted to **SSH**, providing encrypted communica
 
 
 
-PC1 successfully pinged PC2.
 
-### ARP Verification
-
-Verified the IP-to-MAC mapping using:
-
-arp -a
-
-### Switch MAC Learning
-
-Verified learned MAC addresses using:
-
-show mac address-table
-
-## 📊 Communication Process
-
-### Same VLAN Communication
-
-```mermaid
-flowchart TD
-    A[Cyber_EMPLOYER_1<br/>10.1.1.1<br/>VLAN 10] --> B[Check Destination IP]
-    B --> C{Same VLAN?}
-    C -->|Yes| D[Check ARP Table]
-    D --> E{MAC Address Known?}
-    E -->|No| F[ARP Request]
-    F --> G[ARP Reply]
-    G --> H[Create Ethernet Frame]
-    E -->|Yes| H
-    H --> I[Access Port]
-    I --> J[Switch]
-    J --> K[802.1Q Trunk]
-    K --> L[Other Switch]
-    L --> M[Destination Access Port]
-    M --> N[Cyber_EMPLOYER_2<br/>10.1.1.2<br/>VLAN 10]
-    N --> O[ICMP Echo Request]
-    O --> P[ICMP Echo Reply]
-    P --> Q[Successful Communication]
-
-```
 ## ✅ Result
 
 PC1 and PC2 successfully communicated through
