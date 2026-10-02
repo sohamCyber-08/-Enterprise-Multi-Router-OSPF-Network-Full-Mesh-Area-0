@@ -230,35 +230,8 @@ show ip ospf
 **Phase 1 Result:**
 All four routers have been configured with their required Layer 3 interfaces, Loopback interfaces, and OSPF Area 0 parameters. The topology is ready for OSPF neighbor establishment and subsequent DHCP Relay and SSH configuration phases.
 
-````
 
-### One important improvement
 
-I changed your R2/R3/R4 objectives from:
-
-> "inter-router interfaces, Loopback interface..."
-
-to:
-
-> **"inter-router interfaces, LAN interface, Loopback interface..."**
-
-because R2, R3, and R4 also have their respective **LAN-facing interfaces** (`G0/3`) in your topology. That makes the documentation technically more complete.
-
-Also, use the **full Cisco commands** in documentation:
-
-```cisco
-show ip interface brief
-show ip ospf
-````
-
-rather than:
-
-```cisco
-sh ip int brief
-sh ip ospf
-```
-
-Short commands are perfectly valid in the Cisco CLI, but full commands look more professional in a GitHub portfolio and are easier for another person to understand/copy.
 
 
 
