@@ -391,13 +391,13 @@ R2 provides connectivity to the **10.1.1.0/24** LAN containing PC1.
 
 Configure the LAN-facing interface:
 
-
+```cisco
 interface g0/3
  ip helper-address 30.1.1.100
  no shutdown
 end
 write memory
-
+```
 The ip helper-address command enables R2 to forward DHCP requests received from the 10.1.1.0/24 LAN toward the centralized DHCP server.
 
 ⚙️ R3 — DHCP Relay Agent
@@ -428,6 +428,7 @@ Note: The DHCP server 30.1.1.100 and PC4 are on the same 30.1.1.0/24 LAN, so a D
 <br>
 <br>
 <img width="1905" height="1011" alt="Screenshot 2026-10-01 185332" src="https://github.com/user-attachments/assets/577331cc-238f-4891-9216-da562fed8b34" />
+<br>
 <br>
 
 
