@@ -228,6 +228,36 @@ show ip ospf
 | **R4** |      ✅     |     ✅    |      ✅      |       ✅      |
 <br>
 <br>
+```
+flowchart TD
+    A[Start Network Configuration] --> B[Configure R1 Interfaces]
+    B --> C[Configure R2 Interfaces]
+    C --> D[Configure R3 Interfaces]
+    D --> E[Configure R4 Interfaces]
+    E --> F[Configure Loopback Interfaces]
+    F --> G[Configure OSPF Area 0]
+    G --> H[Set OSPF Router IDs]
+    H --> I[Establish OSPF Neighbor Adjacencies]
+    I --> J{OSPF Neighbors FULL?}
+    J -->|Yes| K[Exchange Routing Information]
+    J -->|No| L[Troubleshoot OSPF]
+    L --> I
+    K --> M[Install OSPF Routes]
+    M --> N[Dynamic Routing Established]
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 **Phase 1 Result:**
 All four routers have been configured with their required Layer 3 interfaces, Loopback interfaces, and OSPF Area 0 parameters. The topology is ready for OSPF neighbor establishment and subsequent DHCP Relay and SSH configuration phases.
@@ -493,171 +523,176 @@ After receiving their IP addresses through DHCP, verify connectivity between the
 
 RESULT:
 <img width="1723" height="1013" alt="Screenshot 2026-10-01 185734" src="https://github.com/user-attachments/assets/e69ae5ad-62b8-4b29-869d-d8e3feca8e41" />
+<br>
+<br>
 
 
+## 🔹 Phase 4 — SSH-Only Secure Remote Management
+
+### 📍 4.1 SSH Configuration on R1
+
+#### 🎯 Objective
+
+Enable **SSH version 2** on R1 to provide secure and encrypted remote management access.
+
+Configure local user authentication and restrict remote VTY access to **SSH only**.
+<br>
+<br>
+<img width="1417" height="565" alt="Screenshot 2026-10-01 192354" src="https://github.com/user-attachments/assets/162e6e81-ccc9-4bc4-81dd-66db1ff443d2" />
+
+<br>
+<br>
 
 
+#### 🔍 Verification
+
+Verify that SSH is enabled and the VTY lines are configured for SSH-only access.
+<br>
+<br>
+<img width="1331" height="332" alt="Screenshot 2026-10-01 192413" src="https://github.com/user-attachments/assets/9a523e11-ae8d-4f88-9536-88e989627a6d" />
+
+<br>
+<br>
 
 
+---
+
+### 📍 4.2 SSH Configuration on R2
+
+#### 🎯 Objective
+
+Enable **SSH version 2** on R2 for secure remote administration.
+
+Configure local authentication and restrict remote management access to SSH.
+<br>
+<br>
+
+<img width="1492" height="907" alt="Screenshot 2026-10-01 192640" src="https://github.com/user-attachments/assets/3a1d5101-43b2-4585-bec4-f003cf20b835" />
+
+<br>
+<br>
 
 
+#### 🔍 Verification
+
+Verify SSH status and VTY configuration on R2.
+<br>
+<br>
 
 
+<img width="1110" height="335" alt="Screenshot 2026-10-01 192732" src="https://github.com/user-attachments/assets/2d3b69c9-0c3a-4235-bee1-dbc4ec2b103a" />
+<br>
+<br>
 
 
+---
 
+### 📍 4.3 SSH Configuration on R3
+
+#### 🎯 Objective
+
+Enable **SSH version 2** on R3 to provide secure encrypted remote management.
+
+Configure local authentication and allow SSH-only access through the VTY lines.
+<br>
+<br>
+<img width="1635" height="905" alt="Screenshot 2026-10-01 192753" src="https://github.com/user-attachments/assets/3f82432f-1cb6-4f5f-a303-bb8139e229c6" />
 
 <br>
 <br>
 
 
 
-
-
-
-
-```cisco
-interface g0/3
- ip helper-address 30.1.1.100
-````
-
-The `ip helper-address` command forwards DHCP client requests received on the LAN interface toward the centralized DHCP server.
-
 #### 🔍 Verification
 
-```cisco
-show running-config interface g0/3
-```
+Verify SSH status and VTY configuration on R3.
+<br>
+<br>
 
-Expected configuration:
 
-```text
-interface GigabitEthernet0/3
- ip address 10.1.1.1 255.255.255.0
- ip helper-address 30.1.1.100
-```
+<img width="1140" height="317" alt="Screenshot 2026-10-01 192830" src="https://github.com/user-attachments/assets/8984026f-5dd4-45ba-9477-6e737a9310fb" />
+
+
+<br>
+<br>
+
 
 ---
 
-### 📍 3.3 R3 — DHCP Relay Agent
+### 📍 4.4 SSH Configuration on R4
 
-#### ⚙️ Configuration
+#### 🎯 Objective
 
-R3 connects the **20.1.1.0/24** client network to the centralized DHCP server.
+Enable **SSH version 2** on R4 for secure remote administration.
 
-Configure the DHCP Relay Agent:
+Configure local authentication and restrict remote management access to SSH only.
+<br>
+<br>
+<img width="1551" height="838" alt="Screenshot 2026-10-01 192918" src="https://github.com/user-attachments/assets/24f94161-b621-43a4-a85c-05ad92e91bca" />
 
-```cisco
-interface g0/3
- ip helper-address 30.1.1.100
-```
+<br>
+<br>
+
 
 #### 🔍 Verification
 
-```cisco
-show running-config interface g0/3
-```
+Verify SSH status and VTY configuration on R4.
+<br>
+<br>
 
-Expected configuration:
+<img width="1151" height="355" alt="Screenshot 2026-10-01 193105" src="https://github.com/user-attachments/assets/cbaa43ad-5413-44db-9741-ed9c411c788b" />
 
-```text
-interface GigabitEthernet0/3
- ip address 20.1.1.1 255.255.255.0
- ip helper-address 30.1.1.100
-```
+
+<br>
+<br>
+
 
 ---
 
-### 📍 3.4 DHCP Relay Operation
+### 📊 SSH Configuration Verification
 
-When a DHCP client starts without an IP address, the request follows this process:
+| Router | SSH Version | Authentication | Remote Access | Status |
+|:---:|:---:|:---:|:---:|:---:|
+| **R1** | SSHv2 | Local User | SSH Only | ✅ |
+| **R2** | SSHv2 | Local User | SSH Only | ✅ |
+| **R3** | SSHv2 | Local User | SSH Only | ✅ |
+| **R4** | SSHv2 | Local User | SSH Only | ✅ |
 
-```text
-PC3
-20.1.1.10
-   │
-   │ DHCP Broadcast
-   ▼
-R3
-20.1.1.1
-   │
-   │ DHCP Relay
-   │ ip helper-address 30.1.1.100
-   ▼
-Routed Network
-   │
-   ▼
-DHCP Server
-30.1.1.100
-```
+### 🧪 SSH Connectivity Testing
 
-The router receives the DHCP broadcast on the client-facing interface and forwards the request as a **unicast packet** toward the DHCP server.
 
-The DHCP server uses the relay information to determine which client subnet the request originated from and selects the appropriate DHCP pool.
 
-### 📍 3.5 DHCP Client Verification
 
-Configure the end hosts to obtain their IP addresses dynamically using DHCP.
 
-#### 🖥️ PC3 Verification
+### 🧠 Phase 4 Result
 
-```bash
-ip dhcp
-```
+SSH version 2 was successfully enabled on **R1, R2, R3, and R4**.
 
-Verify the assigned address:
+Remote management access is restricted to **SSH**, providing encrypted communication between the administrator and the network devices.
 
-```bash
-show ip
-```
 
-Expected network:
 
-```text
-Network: 20.1.1.0/24
-Gateway: 20.1.1.1
-DHCP Server: 30.1.1.100
-```
 
-#### 🖥️ PC1 / PC2 Verification
 
-Verify that the clients receive addresses from the:
 
-```text
-10.1.1.0/24
-```
 
-network with:
 
-```text
-Gateway: 10.1.1.1
-DHCP Server: 30.1.1.100
-```
 
-### 🧪 End-to-End DHCP Validation
 
-| Client | Client Network |  Relay Agent |  DHCP Server | Status |
-| :----: | :------------: | :----------: | :----------: | :----: |
-|   PC1  |  `10.1.1.0/24` |      R2      | `30.1.1.100` |    ✅   |
-|   PC2  |  `10.1.1.0/24` |      R2      | `30.1.1.100` |    ✅   |
-|   PC3  |  `20.1.1.0/24` |      R3      | `30.1.1.100` |    ✅   |
-|   PC4  |  `30.1.1.0/24` | Not Required | `30.1.1.100` |    ✅   |
 
-> **Note:** R4 does not require `ip helper-address` because the DHCP server (`30.1.1.100`) and PC4 are already on the same `30.1.1.0/24` LAN. The DHCP broadcast can reach the server directly without crossing a Layer 3 boundary.
 
-### 🧠 Phase 3 Result
 
-The centralized DHCP server successfully provides dynamic IP addressing to clients across multiple routed LANs.
 
-The DHCP Relay Agent configured on **R2 and R3** enables DHCP broadcasts from remote client networks to reach the centralized DHCP server at **`30.1.1.100`**.
 
-This demonstrates centralized IP address management across the multi-router OSPF network.
 
-```
 
-**Phase 3 title:** `🔹 Phase 3 — DHCP Relay Agent Configuration`  
-**Main concept:** `DHCP Broadcast → Relay Agent → DHCP Server`
-```
+
+
+
+
+
+
+
 
 
 
