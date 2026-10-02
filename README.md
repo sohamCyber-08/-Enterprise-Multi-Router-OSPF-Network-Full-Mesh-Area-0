@@ -46,7 +46,9 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 | R3 | `3.3.3.3/32` | `300` | `3.3.3.3` | Area 0 |
 | R4 | `4.4.4.4/32` | `400` | `4.4.4.4` | Area 0 |
 
-
+<br>
+<br>
+<br>
 ## 🔧 Technologies
 
 - EVE-NG
@@ -66,7 +68,9 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 - Cisco IOS CLI
 - Routing Table Verification
 - Network Connectivity & Troubleshooting
-
+<br>
+<br>
+<br>
 ## 🔍 Verification
 
 ### Ping Test
