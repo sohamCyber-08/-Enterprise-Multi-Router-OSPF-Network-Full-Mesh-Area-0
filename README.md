@@ -22,12 +22,12 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 
 | Link | Network | R1 | R2 | R3 | R4 |
 |---|---|---|---|---|---|
-| R1 Gi0/0 ↔ R2 Gi0/0 | `12.1.1.0/30` | `12.1.1.1` | `12.1.1.2` | — | — |
-| R1 Gi0/1 ↔ R3 Gi0/1 | `13.1.1.0/30` | `13.1.1.1` | — | `13.1.1.2` | — |
-| R1 Gi0/2 ↔ R4 Gi0/1 | `14.1.1.0/30` | `14.1.1.1` | — | — | `14.1.1.2` |
-| R2 Gi0/1 ↔ R3 Gi0/0 | `23.1.1.0/30` | — | `23.1.1.1` | `23.1.1.2` | — |
-| R2 Gi0/2 ↔ R4 Gi0/2 | `24.1.1.0/30` | — | `24.1.1.1` | — | `24.1.1.2` |
-| R3 Gi0/2 ↔ R4 Gi0/0 | `34.1.1.0/30` | — | — | `34.1.1.1` | `34.1.1.2` |
+| R1 Gi0/0 ↔ R2 Gi0/0 | `12.1.1.0/30` | `12.1.1.1` | `12.1.1.2` | <div align="center">—</div> | <div align="center">—</div> |
+| R1 Gi0/1 ↔ R3 Gi0/1 | `13.1.1.0/30` | `13.1.1.1` | <div align="center">—</div> | `13.1.1.2` | <div align="center">—</div> |
+| R1 Gi0/2 ↔ R4 Gi0/1 | `14.1.1.0/30` | `14.1.1.1` | <div align="center">—</div> | <div align="center">—</div> | `14.1.1.2` |
+| R2 Gi0/1 ↔ R3 Gi0/0 | `23.1.1.0/30` | <div align="center">—</div> | `23.1.1.1` | `23.1.1.2` | <div align="center">—</div> |
+| R2 Gi0/2 ↔ R4 Gi0/2 | `24.1.1.0/30` | <div align="center">—</div> | `24.1.1.1` | <div align="center">—</div> | `24.1.1.2` |
+| R3 Gi0/2 ↔ R4 Gi0/0 | `34.1.1.0/30` | <div align="center">—</div> | <div align="center">—</div> | `34.1.1.1` | `34.1.1.2` |
 
 ### LAN Segments
 
@@ -40,11 +40,12 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 ### Loopbacks & OSPF
 
 | Router | Loopback | OSPF Process ID | OSPF Router ID | Area |
-|---|---|---:|---|---|
-| R1 | `1.1.1.1/32` | 100 | `1.1.1.1` | Area 0 |
-| R2 | `2.2.2.2/32` | 200 | `2.2.2.2` | Area 0 |
-| R3 | `3.3.3.3/32` | 300 | `3.3.3.3` | Area 0 |
-| R4 | `4.4.4.4/32` | 400 | `4.4.4.4` | Area 0 |
+|---|---|:---:|:---:|---|
+| R1 | `1.1.1.1/32` | `100` | `1.1.1.1` | Area 0 |
+| R2 | `2.2.2.2/32` | `200` | `2.2.2.2` | Area 0 |
+| R3 | `3.3.3.3/32` | `300` | `3.3.3.3` | Area 0 |
+| R4 | `4.4.4.4/32` | `400` | `4.4.4.4` | Area 0 |
+
 
 ## 🔧 Technologies
 
