@@ -92,7 +92,6 @@ Configure R1's inter-router interfaces, Loopback interface, and OSPF process to 
 <br>
 <br>
 
-
 ## 🔍 Verification
 ```cisco
 sh ip int brief
