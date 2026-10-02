@@ -102,7 +102,11 @@ sh ip int brief
 ```cisco
 sh ip ospf
 ```
-
+<br>
+<br>
+<img width="1772" height="878" alt="Screenshot 2026-10-01 183804" src="https://github.com/user-attachments/assets/2c92ef8f-3618-484c-8b3e-a9eb734e1532" />
+<br>
+<br>
 
 PC1 successfully pinged PC2.
 
