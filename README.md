@@ -49,7 +49,7 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 <br>
 <br>
-## 🔢 **IP Addressing**
+## 🔧 Technologies  
 
 - EVE-NG
 - Cisco IOS
