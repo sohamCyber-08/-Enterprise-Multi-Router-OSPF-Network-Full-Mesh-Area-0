@@ -72,7 +72,7 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 <br>
 <br>
-##🛠️ **TASK TO PERFORM**
+
 
 # 🛠️ TASK TO PERFORM
 
@@ -83,6 +83,16 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 **Objective**
 
 Configure R1's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
+<br>
+<br>
+<img width="1906" height="843" alt="Screenshot 2026-10-01 183548" src="https://github.com/user-attachments/assets/56b18ab4-12ac-4a6f-93ca-0bb61af26245" />
+<br>
+<br>
+<img width="1900" height="980" alt="Screenshot 2026-10-01 183600" src="https://github.com/user-attachments/assets/09ec883d-4594-4097-9889-9a7eeaa572cc" />
+<br>
+<br>
+
+
 
 
 
