@@ -325,19 +325,30 @@ Successful replies confirm that **PC3 can communicate with PC1 across different 
 | :-------------: | :-------------: | :------: | :----------: |
 | PC3 `20.1.1.10` | PC1 `10.1.1.10` |   ICMP   | ✅ Successful |
 
-#### 🧠 What This Test Demonstrates
-
-The successful ping verifies the complete forwarding path:
-
-**PC3 → R3 → OSPF-Routed Network → R2 → PC1**
-
-It confirms that the **20.1.1.0/24** and **10.1.1.0/24** networks are reachable through the configured routing infrastructure and that end-to-end ICMP communication is working correctly.
 
 
 
+<br>
+<br>
+```mermaid
+flowchart TD
+    A[PC3<br/>20.1.1.x] --> B[Default Gateway<br/>R3 - 20.1.1.1]
+    B --> C[Check Destination IP]
+    C --> D{Destination<br/>10.1.1.x}
+    D --> E[Check Routing Table]
+    E --> F[OSPF Route to<br/>10.1.1.0/24]
+    F --> G[Forward Packet Through<br/>OSPF Network]
+    G --> H[R2<br/>10.1.1.1]
+    H --> I[Forward to PC1]
+    I --> J[PC1<br/>10.1.1.x]
+    J --> K[ICMP Echo Reply]
+    K --> L[Successful<br/>End-to-End Connectivity]
+```
 
 
-For your repo, **Phase 3** can document the centralized DHCP design and the DHCP Relay Agent configuration. Since your DHCP server is `30.1.1.100`, and the clients in `10.1.1.0/24` and `20.1.1.0/24` are on different routed networks, R2 and R3 act as DHCP relay agents.
+
+
+
 
 ## 🔹 Phase 3 — DHCP Relay Agent Configuration
 
