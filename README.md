@@ -235,6 +235,87 @@ All four routers have been configured with their required Layer 3 interfaces, Lo
 
 
 
+## 🔹 Phase 2 — Inter-LAN Connectivity Verification
+
+### 📍 2.1 PC3 → PC1 End-to-End Connectivity Test
+
+#### 🎯 Objective
+
+Verify end-to-end connectivity between **PC3 (`20.1.1.10`)** and **PC1 (`10.1.1.10`)** across different LAN networks using the configured **OSPF Area 0** routing topology.
+
+This test validates that:
+- PC3 can reach its default gateway **R3 (`20.1.1.1`)**
+- OSPF has learned the **10.1.1.0/24** network
+- Routers can forward traffic across the routed network
+- PC1 can receive and respond to ICMP traffic from PC3
+
+#### 🧪 Connectivity Test
+
+**Source:** PC3 — `20.1.1.10`  
+**Destination:** PC1 — `10.1.1.10`
+
+```text
+PC3 (20.1.1.10)
+       │
+       ▼
+R3 (20.1.1.1)
+       │
+       │ OSPF Area 0
+       ▼
+   Routed Network
+       │
+       ▼
+R2 (10.1.1.1)
+       │
+       ▼
+PC1 (10.1.1.10)
+````
+
+#### 🔍 Verification
+
+From **PC3**, send an ICMP ping to PC1:
+
+```bash
+ping 10.1.1.10
+```
+
+**Expected Result:**
+
+```text
+PC3> ping 10.1.1.10
+
+84 bytes from 10.1.1.10 icmp_seq=1 ttl=... time=...
+84 bytes from 10.1.1.10 icmp_seq=2 ttl=... time=...
+84 bytes from 10.1.1.10 icmp_seq=3 ttl=... time=...
+84 bytes from 10.1.1.10 icmp_seq=4 ttl=... time=...
+```
+
+Successful replies confirm that **PC3 can communicate with PC1 across different IP networks through the OSPF-routed topology**.
+
+#### 🖥️ PC3 → PC1 Test Result
+
+|      Source     |   Destination   | Protocol |    Result    |
+| :-------------: | :-------------: | :------: | :----------: |
+| PC3 `20.1.1.10` | PC1 `10.1.1.10` |   ICMP   | ✅ Successful |
+
+#### 🧠 What This Test Demonstrates
+
+The successful ping verifies the complete forwarding path:
+
+**PC3 → R3 → OSPF-Routed Network → R2 → PC1**
+
+It confirms that the **20.1.1.0/24** and **10.1.1.0/24** networks are reachable through the configured routing infrastructure and that end-to-end ICMP communication is working correctly.
+
+```
+
+### Recommended section title
+
+I would use:
+
+**`🔹 Phase 2 — Inter-LAN Connectivity Verification`**
+
+rather than simply “Ping Test,” because it clearly communicates **what networking concept you are validating**, which looks more professional in a portfolio.
+```
 
 
 
