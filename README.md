@@ -439,6 +439,75 @@ Note: The DHCP server 30.1.1.100 and PC4 are on the same 30.1.1.0/24 LAN, so a D
 
 
 
+📍 3.3 DHCP Client Configuration
+
+After configuring the DHCP Relay Agents, configure the end hosts to obtain their IPv4 configuration dynamically from the centralized DHCP server.
+
+🖥️ PC1 — DHCP
+
+PC1 is connected to the 10.1.1.0/24 LAN.
+
+Configure PC1 to obtain its IP address dynamically:
+
+PC1> ip dhcp
+
+🖥️ PC3 — DHCP
+
+PC3 is connected to the 20.1.1.0/24 LAN.
+
+Configure PC3 for DHCP:
+
+PC3> ip dhcp
+
+🖥️ PC4 — DHCP
+
+PC4 is connected to the 30.1.1.0/24 LAN.
+
+Configure PC4 for DHCP:
+
+PC4> ip dhcp
+
+📍 3.4 DHCP Address Allocation Verification
+
+Verify that the clients successfully receive addresses from their respective DHCP networks.
+
+Client	Network	Default Gateway	DHCP Server	Status
+PC1	10.1.1.0/24	10.1.1.1	30.1.1.100	✅
+PC3	20.1.1.0/24	20.1.1.1	30.1.1.100	✅
+PC4	30.1.1.0/24	30.1.1.1	30.1.1.100	✅
+
+
+📍 3.5 End-to-End Connectivity Testing
+
+After receiving their IP addresses through DHCP, verify connectivity between the dynamically addressed hosts.
+
+📊 Connectivity Verification
+Source	Destination	Test	Result
+PC3	PC1	ICMP Ping	✅
+PC4	PC1	ICMP Ping	✅
+PC1	PC3	ICMP Ping	✅
+PC1	PC4	ICMP Ping	✅
+
+RESULT:
+<img width="1723" height="1013" alt="Screenshot 2026-10-01 185734" src="https://github.com/user-attachments/assets/e69ae5ad-62b8-4b29-869d-d8e3feca8e41" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
 
 
 
