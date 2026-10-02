@@ -106,6 +106,104 @@ sh ip ospf
 <img width="1772" height="878" alt="Screenshot 2026-10-01 183804" src="https://github.com/user-attachments/assets/2c92ef8f-3618-484c-8b3e-a9eb734e1532" />
 <br>
 <br>
+### 📍 1.2 R2 — Interface & OSPF Configuration
+
+**Objective**
+
+Configure R2's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
+<br>
+<br>
+<img width="1715" height="683" alt="Screenshot 2026-10-01 183932" src="https://github.com/user-attachments/assets/6bc576a9-334f-4619-8e35-4f61a530abbf" />
+<br>
+<br>
+<img width="1696" height="995" alt="Screenshot 2026-10-01 183943" src="https://github.com/user-attachments/assets/cdac589f-4afb-4db4-9bd9-e638066bca4f" />
+<br>
+<br>
+## 🔍 Verification
+```cisco
+sh ip int brief
+```
+<br>
+
+```cisco
+sh ip ospf
+```
+<br>
+<br>
+<img width="1716" height="641" alt="Screenshot 2026-10-01 184019" src="https://github.com/user-attachments/assets/bd3ed1fe-938e-45ac-961c-64e1e0f9b669" />
+<br>
+<br>
+
+### 📍 1.3 R3 — Interface & OSPF Configuration
+
+**Objective**
+
+Configure R3's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
+<br>
+<br>
+<img width="1816" height="865" alt="Screenshot 2026-10-01 184200" src="https://github.com/user-attachments/assets/5a650a28-0fad-4aae-8b0a-95397734222b" />
+
+<br>
+<br>
+<img width="1881" height="1006" alt="Screenshot 2026-10-01 184133" src="https://github.com/user-attachments/assets/8e2b664f-1d9c-4168-a477-0cc4847b43d7" />
+
+<br>
+<br>
+## 🔍 Verification
+```cisco
+sh ip int brief
+```
+<br>
+
+```cisco
+sh ip ospf
+```
+<br>
+<br>
+<img width="1595" height="696" alt="Screenshot 2026-10-01 184230" src="https://github.com/user-attachments/assets/f920afb6-7c54-44fa-b7a8-e807d94ff18b" />
+<br>
+<br>
+
+
+### 📍 1.4 R4 — Interface & OSPF Configuration
+
+**Objective**
+
+Configure R4's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
+<br>
+<br>
+<img width="1682" height="647" alt="Screenshot 2026-10-01 184404" src="https://github.com/user-attachments/assets/b1fd38c1-028a-4a47-bbeb-753867517db5" />
+
+
+<br>
+<br>
+<img width="1691" height="771" alt="Screenshot 2026-10-01 184416" src="https://github.com/user-attachments/assets/e2dc7c50-b02a-4fb5-bd29-0eb0ff20a35b" />
+
+
+<br>
+<br>
+## 🔍 Verification
+```cisco
+sh ip int brief
+```
+<br>
+
+```cisco
+sh ip ospf
+```
+<br>
+<br>
+<img width="1731" height="703" alt="Screenshot 2026-10-01 184743" src="https://github.com/user-attachments/assets/f7c60a24-c8ac-454b-a8ce-a3561b69a2c6" />
+
+<br>
+<br>
+
+
+
+
+
+
+
 
 PC1 successfully pinged PC2.
 
