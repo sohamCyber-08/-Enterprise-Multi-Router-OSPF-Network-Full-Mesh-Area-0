@@ -1,6 +1,6 @@
 
 
-# 🧪 Enterprise-Multi-Router-OSPF-Network-Full-Mesh-Area-0
+# 🌐 Enterprise-Multi-Router-OSPF-Network-Full-Mesh-Area-0
 
 ## 🎯 Objective
 
