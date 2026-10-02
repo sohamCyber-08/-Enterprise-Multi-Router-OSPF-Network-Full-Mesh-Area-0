@@ -74,10 +74,15 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 ##🛠️ **TASK TO PERFORM**
 
-🔹** Phase 1 — Basic Interface & OSPF Configuration
-1.1 R1 — Interface & OSPF Configuration
+# 🛠️ TASK TO PERFORM
 
-Objective: Configure R1's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing with the other routers.
+## 🔹 Phase 1 — Basic Interface & OSPF Configuration
+
+### 📍 1.1 R1 — Interface & OSPF Configuration
+
+**Objective**
+
+Configure R1's inter-router interfaces, Loopback interface, and OSPF process to establish dynamic routing and participate in the OSPF Area 0 domain.
 
 
 
