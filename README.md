@@ -2,11 +2,9 @@
 
 # 🌐 Enterprise-Multi-Router-OSPF-Network-Full-Mesh-Area-0
 
-## 🎯 Objective
+## 🎯 Project Objective
 
-Build a basic LAN using two PCs and a Layer 2 switch
-to understand IP addressing, subnetting, ARP, MAC learning,
-and ICMP connectivity.
+Design and implement a simulated enterprise campus network consisting of 4 routers, 3 Layer 2 switches, a centralized DHCP server, and 4 end hosts. Configure a fully meshed OSPF Area 0 topology to provide dynamic routing and network redundancy, implement DHCP relay to enable centralized IP address allocation across multiple subnets, and secure all network devices with SSH-only remote management. Finally, validate the complete network design through end-to-end connectivity testing and real-world Cisco IOS diagnostic and verification commands.
 
 ## 🖥️ Topology
 
