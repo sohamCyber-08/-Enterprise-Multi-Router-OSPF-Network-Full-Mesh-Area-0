@@ -226,6 +226,8 @@ show ip ospf
 | **R2** |      ✅     |     ✅    |      ✅      |       ✅      |
 | **R3** |      ✅     |     ✅    |      ✅      |       ✅      |
 | **R4** |      ✅     |     ✅    |      ✅      |       ✅      |
+<br>
+<br>
 
 **Phase 1 Result:**
 All four routers have been configured with their required Layer 3 interfaces, Loopback interfaces, and OSPF Area 0 parameters. The topology is ready for OSPF neighbor establishment and subsequent DHCP Relay and SSH configuration phases.
