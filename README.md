@@ -49,12 +49,23 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 
 ## 🔧 Technologies
 
-- Cisco Packet Tracer
+- EVE-NG
+- Cisco IOS
 - IPv4
+- OSPFv2
+- OSPF Area 0
+- Full-Mesh Routing
+- Static IP Addressing
+- DHCP
+- DHCP Relay (`ip helper-address`)
+- IPv4 Subnetting
 - Ethernet
 - ARP
 - ICMP
-- MAC Address Table
+- SSH
+- Cisco IOS CLI
+- Routing Table Verification
+- Network Connectivity & Troubleshooting
 
 ## 🔍 Verification
 
