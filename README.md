@@ -93,17 +93,16 @@ Configure R1's inter-router interfaces, Loopback interface, and OSPF process to 
 <br>
 
 
-
-
-
-
-
-
-
-
 ## 🔍 Verification
+```cisco
+sh ip int brief
+```
+<br>
 
-### Ping Test
+```cisco
+sh ip ospf
+```
+
 
 PC1 successfully pinged PC2.
 
