@@ -15,8 +15,8 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 <br>
 <br>
 
-## 🌐 IP Addressing
-## IP Addressing Plan
+## 🔢 IP Addressing
+
 
 ### Inter-Router Links
 
