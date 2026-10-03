@@ -869,20 +869,36 @@ SSH connectivity was successfully verified from **SW2 to R1, R2, R3, and R4**, d
 
 ```mermaid
 flowchart TD
-    A["Administrator"] --> B["SSH Connection Request"]
-    B --> C{"Target Router"}
-    C -->|R1| D["R1"]
-    C -->|R2| E["R2"]
-    C -->|R3| F["R3"]
-    C -->|R4| G["R4"]
-    D --> H["SSH Version 2"]
-    E --> H
-    F --> H
-    G --> H
+    A["Administrator"] --> B["SW2 SSH Client"]
+
+    B --> C["Layer 3 Routing Enabled"]
+    C --> D{"Destination Router"}
+
+    D -->|R1: 1.1.1.1| E["Default Route"]
+    D -->|R2: 2.2.2.2| E
+    D -->|R3: 3.3.3.3| E
+    D -->|R4: 4.4.4.4| E
+
+    E["0.0.0.0/0 via 20.1.1.1"] --> F["R3: 20.1.1.1"]
+
+    F --> G["OSPF Routing"]
+    
+    G -->|R1 Loopback| R1["R1: 1.1.1.1"]
+    G -->|R2 Loopback| R2["R2: 2.2.2.2"]
+    G -->|R3 Loopback| R3["R3: 3.3.3.3"]
+    G -->|R4 Loopback| R4["R4: 4.4.4.4"]
+
+    R1 --> H["SSH Version 2"]
+    R2 --> H
+    R3 --> H
+    R4 --> H
+
     H --> I["Local User Authentication"]
     I --> J{"Credentials Valid?"}
+
     J -->|Yes| K["Secure SSH Session"]
     J -->|No| L["Access Denied"]
+
     K --> M["Remote Router Management"]
 ```
 
