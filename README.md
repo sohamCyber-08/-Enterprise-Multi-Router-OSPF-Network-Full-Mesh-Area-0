@@ -661,7 +661,211 @@ Verify SSH status and VTY configuration on R4.
 
 ---
 
-## 🔄 Phase 4 — SSH Authentication Flow
+<br>
+<br>
+Yes. Now the result is clear: **the issue was that SW2 needed Layer-3 routing enabled with a default route to R3**. Your screenshots now prove that SW2 can reach the remote router networks and establish SSH sessions.
+
+For your GitHub README, I recommend adding the following **after 4.4 SSH Configuration on R4**, and **before the final Phase 4 Result**.
+
+---
+
+# 📍 4.5 Layer 3 Routing on SW2
+
+### 🎯 Objective
+
+Enable Layer 3 routing on SW2 and configure a default static route toward R3.
+
+This allows SW2 to reach remote router networks, including the loopback networks of **R1, R2, R3, and R4**, and provides the required IP connectivity for SSH management.
+
+### ⚙️ Configuration
+
+```cisco
+enable
+configure terminal
+
+ip routing
+
+ip route 0.0.0.0 0.0.0.0 20.1.1.1
+
+end
+write memory
+```
+
+<br>
+<br>
+<img width="1265" height="650" alt="Screenshot 2026-10-04 001610" src="https://github.com/user-attachments/assets/ba954f76-20e6-434d-a4ab-07ef4b2e5778" />
+
+<br>
+<br>
+
+### 🔍 Verification
+
+Verify the routing table on SW2:
+
+```cisco
+show ip route
+```
+
+The default route should point to R3:
+
+```text
+Gateway of last resort is 20.1.1.1 to network 0.0.0.0
+
+S*    0.0.0.0/0 [1/0] via 20.1.1.1
+C     20.1.1.0/24 is directly connected, Vlan1
+L     20.1.1.2/32 is directly connected, Vlan1
+```
+
+The default route allows SW2 to forward traffic for destinations that are not directly connected through **R3 (20.1.1.1)**.
+
+<br>
+<br>
+<img width="1437" height="757" alt="Screenshot 2026-10-04 001542" src="https://github.com/user-attachments/assets/9c6c4259-2795-4d50-b66f-70d58de21ddd" />
+
+
+<br>
+<br> 
+
+
+---
+
+# 📍 4.6 SSH Connectivity Verification from SW2
+
+### 🎯 Objective
+
+Verify remote SSH connectivity from SW2 to **R1, R2, R3, and R4** using their configured SSH accounts.
+
+Successful login to each router confirms:
+
+* IP connectivity between SW2 and the router
+* SSH version 2 operation
+* Local username authentication
+* SSH-only VTY access
+* Remote management capability
+
+---
+
+## 🔹 R1 SSH Verification
+
+From SW2:
+
+```cisco
+Switch# ssh -l adminR1 1.1.1.1
+```
+
+After successful authentication:
+
+```text
+R1#
+```
+
+This confirms successful SSH access from SW2 to R1.
+<br>
+<br>
+
+<img width="1362" height="707" alt="Screenshot 2026-10-04 001625" src="https://github.com/user-attachments/assets/317f2402-fd3b-42ef-98b9-6695e98f9959" />
+
+<br>
+<br>
+---
+
+## 🔹 R2 SSH Verification
+
+From SW2:
+
+```cisco
+Switch# ssh -l adminR2 2.2.2.2
+```
+
+After successful authentication:
+
+```text
+R2#
+```
+
+This confirms successful SSH access from SW2 to R2.
+<br>
+<br>
+<img width="960" height="582" alt="Screenshot 2026-10-04 002021" src="https://github.com/user-attachments/assets/6737a2d0-215c-45ac-a327-81b227d21b13" />
+<br>
+<br>
+
+---
+
+## 🔹 R3 SSH Verification
+
+From SW2:
+
+```cisco
+Switch# ssh -l adminR3 3.3.3.3
+```
+
+After successful authentication:
+
+```text
+R3#
+```
+
+This confirms successful SSH access from SW2 to R3.
+<br>
+<br>
+<img width="932" height="472" alt="Screenshot 2026-10-04 002150" src="https://github.com/user-attachments/assets/9b89bbfb-f3ac-460f-a62d-79730fe0983f" />
+<br>
+<br>
+
+---
+
+## 🔹 R4 SSH Verification
+
+From SW2:
+
+```cisco
+Switch# ssh -l adminR4 4.4.4.4
+```
+
+After successful authentication:
+
+```text
+R4#
+```
+
+This confirms successful SSH access from SW2 to R4.
+<br>
+<br>
+<img width="922" height="493" alt="Screenshot 2026-10-04 002301" src="https://github.com/user-attachments/assets/aec32fdb-1114-4bbc-8f4e-d62abc1367ba" />
+
+<br>
+<br>
+---
+
+# 📊 SSH Connectivity Verification
+
+|  Source | Destination | Destination IP | Authentication |    Result    |
+| :-----: | :---------: | :------------: | :------------: | :----------: |
+| **SW2** |    **R1**   |    `1.1.1.1`   |   Local User   | ✅ Successful |
+| **SW2** |    **R2**   |    `2.2.2.2`   |   Local User   | ✅ Successful |
+| **SW2** |    **R3**   |    `3.3.3.3`   |   Local User   | ✅ Successful |
+| **SW2** |    **R4**   |    `4.4.4.4`   |   Local User   | ✅ Successful |
+
+---
+
+# 🧠 Phase 4 Result
+
+SSH version 2 was successfully configured on **R1, R2, R3, and R4** with local user authentication and SSH-only VTY access.
+
+Layer 3 routing was enabled on **SW2**, with a default route toward **R3 (`20.1.1.1`)** to provide connectivity to remote router networks.
+
+SSH connectivity was successfully verified from **SW2 to R1, R2, R3, and R4**, demonstrating secure remote management across the routed network.
+
+---
+
+
+<br>
+<br>
+
+
+
+## 🔄  SSH Authentication Flow
 
 ```mermaid
 flowchart TD
@@ -682,11 +886,7 @@ flowchart TD
     K --> M["Remote Router Management"]
 ```
 
----
 
-## 🧪 SSH Connectivity Testing
-
----
 
 ## 🧠 Phase 4 Result
 
