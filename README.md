@@ -493,7 +493,8 @@ write memory
 
 <br>
 
-<img width="1905" height="1011" alt="Screenshot 2026-10-01 185332" src="https://github.com/user-attachments/assets/577331cc-2386-4891-8e35-4f61a530abbf" />
+
+<img width="1905" height="1011" alt="Screenshot 2026-10-01 185332" src="https://github.com/user-attachments/assets/cf534ea9-d9d7-4da5-8834-e8dfe0dcb7de" />
 
 ---
 
@@ -534,7 +535,12 @@ Configure PC4 for DHCP:
 ```text
 PC4> ip dhcp
 ```
-
+<br>
+<br>
+<img width="1831" height="1003" alt="Screenshot 2026-10-01 185550" src="https://github.com/user-attachments/assets/70a9c910-a779-403f-a4fe-70d5e8a0a22f" />
+<br>
+<br>
+Note : PC3 config is done only not capture .
 ---
 
 ## 📍 3.6 DHCP Address Allocation Verification
@@ -562,9 +568,11 @@ After receiving their IP addresses through DHCP, verify connectivity between the
 | **PC1** |   **PC3**   | ICMP Ping |    ✅   |
 | **PC1** |   **PC4**   | ICMP Ping |    ✅   |
 
-### 📸 Result
+<br>
 
-<img width="1723" height="1013" alt="Screenshot 2026-10-01 185734" src="https://github.com/user-attachments/assets/e69ae5ad-62b8-4b29-869d-d8e3feca8e41" />
+<img width="1723" height="1013" alt="Screenshot 2026-10-01 185734" src="https://github.com/user-attachments/assets/129ea59f-e67e-4c2a-8482-f4e2fbcd41f4" />
+
+<br>
 
 ### 🔄 Phase 3 — DHCP Flow
 
@@ -599,8 +607,9 @@ Enable **SSH version 2** on R1 to provide secure and encrypted remote management
 Configure local user authentication and restrict remote VTY access to **SSH only**.
 
 <br>
+<img width="1417" height="565" alt="Screenshot 2026-10-01 192354" src="https://github.com/user-attachments/assets/d8e96e6b-d8c0-4b35-9a3a-25ae62844f6f" />
 
-<img width="1417" height="565" alt="Screenshot 2026-10-01 192354" src="https://github.com/user-attachments/assets/162e6e81-ccc4-4bc4-81dd-66db1ff443d2" />
+
 
 <br>
 
@@ -609,8 +618,9 @@ Configure local user authentication and restrict remote VTY access to **SSH only
 Verify that SSH is enabled and the VTY lines are configured for SSH-only access.
 
 <br>
+<img width="1331" height="332" alt="Screenshot 2026-10-01 192413" src="https://github.com/user-attachments/assets/f708d11b-8dc9-407e-9781-6f5c09246697" />
 
-<img width="1331" height="332" alt="Screenshot 2026-10-01 192413" src="https://github.com/user-attachments/assets/9a523e11-ccc4-4bc4-81dd-66db1ff443d2" />
+
 
 ---
 
@@ -624,7 +634,8 @@ Configure local authentication and restrict remote management access to SSH.
 
 <br>
 
-<img width="1492" height="907" alt="Screenshot 2026-10-01 192640" src="https://github.com/user-attachments/assets/3a1d5101-43b2-4a6f-a303-bb8139e229c6" />
+<img width="1492" height="907" alt="Screenshot 2026-10-01 192640" src="https://github.com/user-attachments/assets/cef5b2c5-6467-48f0-835d-b63513de3aa6" />
+
 
 <br>
 
@@ -634,7 +645,8 @@ Verify SSH status and VTY configuration on R2.
 
 <br>
 
-<img width="1110" height="335" alt="Screenshot 2026-10-01 192732" src="https://github.com/user-attachments/assets/2d3b69c9-0c3a-4235-bee1-dbc4ec2b103a" />
+<img width="1110" height="335" alt="Screenshot 2026-10-01 192732" src="https://github.com/user-attachments/assets/684d6d31-e546-4433-9d45-64bf9c1e9b65" />
+
 
 ---
 
@@ -648,7 +660,8 @@ Configure local authentication and allow SSH-only access through the VTY lines.
 
 <br>
 
-<img width="1635" height="905" alt="Screenshot 2026-10-01 192753" src="https://github.com/user-attachments/assets/3f82432f-1cb6-4f5f-a303-bb8139e229c6" />
+<img width="1635" height="905" alt="Screenshot 2026-10-01 192753" src="https://github.com/user-attachments/assets/93b97b8a-6083-405c-970d-d80ac71cdd5e" />
+
 
 <br>
 
@@ -658,7 +671,8 @@ Verify SSH status and VTY configuration on R3.
 
 <br>
 
-<img width="1140" height="317" alt="Screenshot 2026-10-01 192830" src="https://github.com/user-attachments/assets/8984026f-5dd4-45ba-9477-6e737a9310fb" />
+<img width="1140" height="317" alt="Screenshot 2026-10-01 192830" src="https://github.com/user-attachments/assets/4b8aacb6-327a-4b2e-a17b-8e5314f3ed15" />
+
 
 ---
 
@@ -672,7 +686,8 @@ Configure local authentication and restrict remote management access to SSH only
 
 <br>
 
-<img width="1551" height="838" alt="Screenshot 2026-10-01 192918" src="https://github.com/user-attachments/assets/24f94161-b621-43a4-a85c-05ad92e91bca" />
+<img width="1551" height="838" alt="Screenshot 2026-10-01 192918" src="https://github.com/user-attachments/assets/79a9ddbf-b4eb-459b-8c1b-e8c7cecf6e92" />
+
 
 <br>
 
@@ -682,7 +697,8 @@ Verify SSH status and VTY configuration on R4.
 
 <br>
 
-<img width="1151" height="355" alt="Screenshot 2026-10-01 193105" src="https://github.com/user-attachments/assets/cbaa43ad-5413-44db-9741-ed9c411c788b" />
+<img width="1151" height="355" alt="Screenshot 2026-10-01 193105" src="https://github.com/user-attachments/assets/8e21bbc4-79c4-431e-a6b0-d8938ad52823" />
+
 
 ---
 
@@ -721,8 +737,9 @@ write memory
 
 <br>
 <br>
+<img width="1265" height="650" alt="Screenshot 2026-10-04 001610" src="https://github.com/user-attachments/assets/66ebc134-7b98-46ee-b178-cbe54eb90f63" />
 
-<img width="1265" height="650" alt="Screenshot 2026-10-04 001610" src="https://github.com/user-attachments/assets/ba954f76-20e6-434d-a4ab-07ef4b2e5778" />
+
 
 <br>
 <br>
@@ -750,7 +767,8 @@ The default route allows SW2 to forward traffic for destinations that are not di
 <br>
 <br>
 
-<img width="1437" height="757" alt="Screenshot 2026-10-04 001542" src="https://github.com/user-attachments/assets/9c6c4259-2795-4d50-b66f-70d58de21ddd" />
+<img width="1265" height="650" alt="Screenshot 2026-10-04 001610" src="https://github.com/user-attachments/assets/0455945c-3bd5-4552-9de9-0b7bb9a0bd25" />
+
 
 <br>
 <br>
@@ -791,8 +809,8 @@ This confirms successful SSH access from SW2 to R1.
 
 <br>
 <br>
+<img width="1362" height="707" alt="Screenshot 2026-10-04 001625" src="https://github.com/user-attachments/assets/aef58e19-61d5-49a8-9e87-9a424e700ecf" />
 
-<img width="1362" height="707" alt="Screenshot 2026-10-04 001625" src="https://github.com/user-attachments/assets/317f2402-fd3b-42ef-98b9-6695e98f9959" />
 
 <br>
 <br>
@@ -818,7 +836,8 @@ This confirms successful SSH access from SW2 to R2.
 <br>
 <br>
 
-<img width="960" height="582" alt="Screenshot 2026-10-04 002021" src="https://github.com/user-attachments/assets/6737a2d0-215c-45ac-a327-81b227d21b13" />
+<img width="960" height="582" alt="Screenshot 2026-10-04 002021" src="https://github.com/user-attachments/assets/a329f387-6e98-44ff-86b0-063d86d9b2f7" />
+
 
 <br>
 <br>
@@ -844,7 +863,8 @@ This confirms successful SSH access from SW2 to R3.
 <br>
 <br>
 
-<img width="932" height="472" alt="Screenshot 2026-10-04 002150" src="https://github.com/user-attachments/assets/9b89bbfb-f3ac-460f-a62d-79730fe0983f" />
+<img width="932" height="472" alt="Screenshot 2026-10-04 002150" src="https://github.com/user-attachments/assets/dc2cdcdb-847f-423c-a072-548bf4bad7c1" />
+
 
 <br>
 <br>
@@ -870,7 +890,8 @@ This confirms successful SSH access from SW2 to R4.
 <br>
 <br>
 
-<img width="922" height="493" alt="Screenshot 2026-10-04 002301" src="https://github.com/user-attachments/assets/aec32fdb-1114-4bbc-8f4e-d62abc1367ba" />
+<img width="922" height="493" alt="Screenshot 2026-10-04 002301" src="https://github.com/user-attachments/assets/377ce5b9-ab33-429e-8fca-557540959ca6" />
+
 
 <br>
 <br>
