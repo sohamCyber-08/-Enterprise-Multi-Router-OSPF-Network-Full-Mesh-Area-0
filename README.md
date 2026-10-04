@@ -158,7 +158,6 @@ Configure R2's inter-router interfaces, LAN interface, Loopback interface, and O
 
 <br>
 
-<img width="1696" height="995" alt="R2 OSPF Configuration" src="https://github.com/user-attachments/assets/cdac589f-4afb-4db4-9e638066bca4f" />
 
 <br>
 
