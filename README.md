@@ -1021,6 +1021,7 @@ Through this project, I gained practical experience in the following areas:
 
 ### 🔹 Network Troubleshooting
 
+
 Gained practical experience using Cisco IOS verification and troubleshooting commands such as:
 
 ```text
