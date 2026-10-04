@@ -349,13 +349,18 @@ Because DHCP client requests are initially sent as **broadcasts** and routers do
 
 ### 🌐 DHCP Server Information
 
-| Parameter              | Configuration |
-| :--------------------- | :-----------: |
-| **DHCP Server IP**     |  `30.1.1.100` |
-| **Server Network**     | `30.1.1.0/24` |
-| **Default Gateway**    |   `30.1.1.1`  |
-| **DHCP Service**       |    Enabled    |
-| **Address Allocation** |    Dynamic    |
+| Parameter              |                Configuration                |
+| :--------------------- | :-----------------------------------------: |
+| **DHCP Server IP**     |                 `30.1.1.100`                |
+| **Server Network**     |                `30.1.1.0/24`                |
+| **Default Gateway**    |                  `30.1.1.1`                 |
+| **DHCP Service**       |                   Enabled                   |
+| **Address Allocation** |                   Dynamic                   |
+| **DHCP Pools**         | `10.1.1.0/24`, `20.1.1.0/24`, `30.1.1.0/24` |
+| **DNS Server**         |                  `8.8.8.8`                  |
+| **DHCP Relay**         |                  Configured                 |
+| **Routing Protocol**   |                 OSPF Area 0                 |
+
 
 ### ⚙️ DHCP Pool Configuration
 
