@@ -401,7 +401,7 @@ Because DHCP client requests are initially sent as **broadcasts** and routers do
 
 <br>
 
-<img width="1791" height="692" alt="Screenshot 2026-10-01 185117" src="https://github.com/user-attachments/assets/58054a57-eaa3-4a3d-8f09-f2e8ab76ccbc" />
+<img width="1791" height="692" alt="Screenshot 2026-10-01 185117" src="https://github.com/user-attachments/assets/96c1f47e-2479-4dff-a1f7-3ed6f080dfe7" />
 
 <br>
 
