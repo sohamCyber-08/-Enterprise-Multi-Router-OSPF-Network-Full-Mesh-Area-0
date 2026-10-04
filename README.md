@@ -967,57 +967,68 @@ Remote management access is restricted to **SSH**, providing encrypted communica
 
 ---
 
-🏆 Project Result
+## 🏆 Project Result
 
-The enterprise network was successfully designed and implemented in EVE-NG using a fully meshed four-router topology with OSPF Area 0, centralized DHCP, DHCP relay, VLAN-based LAN connectivity, and secure remote management.
+The enterprise network was successfully designed and implemented in **EVE-NG** using a fully meshed four-router topology with **OSPF Area 0**, centralized DHCP, DHCP relay, VLAN-based LAN connectivity, and secure remote management.
 
 The implementation successfully achieved:
 
-✅ Established OSPF neighbor relationships across the four-router full-mesh topology.
-✅ Achieved dynamic routing and redundant path connectivity using OSPF Area 0.
-✅ Implemented centralized DHCP with DHCP relay for remote LANs.
-✅ Verified successful IP address allocation to end hosts.
-✅ Implemented SSH Version 2 with local authentication on R1, R2, R3, and R4.
-✅ Restricted VTY remote access to SSH only.
-✅ Enabled Layer 3 routing on SW2 and configured a default route toward R3 for remote management connectivity.
-✅ Successfully verified SSH access from SW2 to R1, R2, R3, and R4.
-✅ Performed connectivity and routing verification using Cisco IOS troubleshooting commands.
+- ✅ Established OSPF neighbor relationships across the four-router full-mesh topology.
+- ✅ Achieved dynamic routing and redundant path connectivity using **OSPF Area 0**.
+- ✅ Implemented centralized DHCP with **DHCP Relay** for remote LANs.
+- ✅ Verified successful IP address allocation to end hosts.
+- ✅ Implemented **SSH Version 2** with local authentication on R1, R2, R3, and R4.
+- ✅ Restricted VTY remote access to **SSH only**.
+- ✅ Enabled Layer 3 routing on SW2 and configured a default route toward R3 for remote management connectivity.
+- ✅ Successfully verified SSH access from **SW2 to R1, R2, R3, and R4**.
+- ✅ Performed connectivity and routing verification using Cisco IOS troubleshooting commands.
 
-Overall, the project demonstrates the implementation of a routed enterprise network with dynamic routing, centralized IP address management, and secure remote administration.
+Overall, the project demonstrates the implementation of a **routed enterprise network with dynamic routing, centralized IP address management, and secure remote administration**.
+
 ---
 
-🧠 Key Learnings
+## 🧠 Key Learnings
 
-Through this project, I gained practical experience in:
+Through this project, I gained practical experience in the following areas:
 
-🔹 Routing & OSPF
-Understanding and configuring OSPF Area 0.
-Establishing and troubleshooting OSPF neighbor relationships.
-Understanding routing tables, next-hop selection, and route propagation.
-Implementing a full-mesh routed topology for redundancy.
-🔹 DHCP & IP Address Management
-Configuring a centralized DHCP server.
-Understanding the difference between local DHCP and DHCP relay.
-Configuring ip helper-address to forward DHCP requests across routed networks.
-Verifying DHCP leases and client connectivity.
-🔹 Layer 2 & Layer 3
-Understanding the difference between Layer 2 switching and Layer 3 routing.
-Configuring and managing SVIs.
-Understanding the difference between ip default-gateway and a Layer 3 default route.
-Troubleshooting connectivity between directly connected and remote networks.
-🔹 Network Security
-Configuring SSH Version 2 for encrypted remote management.
-Implementing local username/password authentication.
-Restricting VTY access to SSH only.
-Understanding why secure remote management is preferred over Telnet.
-🔹 Troubleshooting
-Using commands such as:
+### 🔹 Routing & OSPF
+
+- Understanding and configuring **OSPF Area 0**.
+- Establishing and troubleshooting **OSPF neighbor relationships**.
+- Understanding **routing tables, next-hop selection, and route propagation**.
+- Implementing a **full-mesh routed topology** for redundancy.
+
+### 🔹 DHCP & IP Address Management
+
+- Configuring a **centralized DHCP server**.
+- Understanding the difference between **local DHCP and DHCP Relay**.
+- Configuring `ip helper-address` to forward DHCP requests across routed networks.
+- Verifying **DHCP leases and client connectivity**.
+
+### 🔹 Layer 2 & Layer 3
+
+- Understanding the difference between **Layer 2 switching and Layer 3 routing**.
+- Configuring and managing **SVIs**.
+- Understanding the difference between `ip default-gateway` and a **Layer 3 default route**.
+- Troubleshooting connectivity between **directly connected and remote networks**.
+
+### 🔹 Network Security
+
+- Configuring **SSH Version 2** for encrypted remote management.
+- Implementing **local user authentication**.
+- Restricting VTY access to **SSH only**.
+- Understanding why **SSH is preferred over Telnet** for secure remote device management.
+
+### 🔹 Network Troubleshooting
+
+Gained practical experience using Cisco IOS verification and troubleshooting commands such as:
+
+```text
 show ip route
 show ip ospf neighbor
 show ip interface
 show ip arp
 show interfaces
+show ip ssh
 ping
 traceroute
-show ip ssh
-Troubleshooting issues involving routing, gateway configuration, interface negotiation, and remote connectivity.
