@@ -1,6 +1,38 @@
+# 🌐 Enterprise Multi-Router OSPF Network
 
+### Full-Mesh Area 0 • Centralized DHCP • SSH-Only Remote Management
 
-# 🌐 Enterprise Multi-Router OSPF Network — Full Mesh Area 0
+> **Enterprise Network Simulation | Cisco IOS | EVE-NG | IPv4 | OSPFv2**
+
+---
+
+## 📑 Project Navigation
+
+* [🎯 Project Objective](#-project-objective)
+* [🖥️ Topology](#️-topology)
+* [🔢 IP Addressing](#-ip-addressing)
+
+  * [🔗 Inter-Router Links](#-inter-router-links)
+  * [🏢 LAN Segments](#-lan-segments)
+  * [🔄 Loopbacks & OSPF](#-loopbacks--ospf)
+* [🔧 Technologies](#-technologies)
+* [🛠️ Task to Perform](#️-task-to-perform)
+
+  * [🔹 Phase 1 — Basic Interface & OSPF Configuration](#-phase-1--basic-interface--ospf-configuration)
+  * [🔹 Phase 2 — Inter-LAN Connectivity Verification](#-phase-2--inter-lan-connectivity-verification)
+  * [🔹 Phase 3 — DHCP Relay Agent Configuration](#-phase-3--dhcp-relay-agent-configuration)
+  * [🔹 Phase 4 — SSH-Only Secure Remote Management](#-phase-4--ssh-only-secure-remote-management)
+* [🧠 Key Learning](#-key-learning)
+
+---
+
+<div align="center">
+
+**4 Routers** • **3 Layer 2 Switches** • **Centralized DHCP** • **OSPF Area 0** • **SSHv2**
+
+</div>
+
+---
 
 ## 🎯 Project Objective
 
@@ -12,7 +44,6 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 
 <br>
 
-
 <img width="1547" height="878" alt="Screenshot 2026-10-01 182754" src="https://github.com/user-attachments/assets/01f07135-b574-4047-aaed-d9c2cc91a13d" />
 
 <br>
@@ -23,65 +54,63 @@ Design and implement a simulated enterprise campus network consisting of 4 route
 
 ## 🔗 Inter-Router Links
 
-| Link | Network | R1 | R2 | R3 | R4 |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| R1 Gi0/0 ↔ R2 Gi0/0 | `12.1.1.0/30` | `12.1.1.1` | `12.1.1.2` | <div align="center">—</div> | <div align="center">—</div> |
-| R1 Gi0/1 ↔ R3 Gi0/1 | `13.1.1.0/30` | `13.1.1.1` | <div align="center">—</div> | `13.1.1.2` | <div align="center">—</div> |
-| R1 Gi0/2 ↔ R4 Gi0/1 | `14.1.1.0/30` | `14.1.1.1` | <div align="center">—</div> | <div align="center">—</div> | `14.1.1.2` |
-| R2 Gi0/1 ↔ R3 Gi0/0 | `23.1.1.0/30` | <div align="center">—</div> | `23.1.1.1` | `23.1.1.2` | <div align="center">—</div> |
-| R2 Gi0/2 ↔ R4 Gi0/2 | `24.1.1.0/30` | <div align="center">—</div> | `24.1.1.1` | <div align="center">—</div> | `24.1.1.2` |
-| R3 Gi0/2 ↔ R4 Gi0/0 | `34.1.1.0/30` | <div align="center">—</div> | <div align="center">—</div> | `34.1.1.1` | `34.1.1.2` |
+| Link                |    Network    |              R1             |              R2             |              R3             |              R4             |
+| :------------------ | :-----------: | :-------------------------: | :-------------------------: | :-------------------------: | :-------------------------: |
+| R1 Gi0/0 ↔ R2 Gi0/0 | `12.1.1.0/30` |          `12.1.1.1`         |          `12.1.1.2`         | <div align="center">—</div> | <div align="center">—</div> |
+| R1 Gi0/1 ↔ R3 Gi0/1 | `13.1.1.0/30` |          `13.1.1.1`         | <div align="center">—</div> |          `13.1.1.2`         | <div align="center">—</div> |
+| R1 Gi0/2 ↔ R4 Gi0/1 | `14.1.1.0/30` |          `14.1.1.1`         | <div align="center">—</div> | <div align="center">—</div> |          `14.1.1.2`         |
+| R2 Gi0/1 ↔ R3 Gi0/0 | `23.1.1.0/30` | <div align="center">—</div> |          `23.1.1.1`         |          `23.1.1.2`         | <div align="center">—</div> |
+| R2 Gi0/2 ↔ R4 Gi0/2 | `24.1.1.0/30` | <div align="center">—</div> |          `24.1.1.1`         | <div align="center">—</div> |          `24.1.1.2`         |
+| R3 Gi0/2 ↔ R4 Gi0/0 | `34.1.1.0/30` | <div align="center">—</div> | <div align="center">—</div> |          `34.1.1.1`         |          `34.1.1.2`         |
 
 ---
 
 ## 🏢 LAN Segments
 
-| LAN Segment | Network | Gateway | Devices |
-|:---|:---:|:---:|:---|
-| R2 Gi0/3 ↔ SW1 | `10.1.1.0/24` | `10.1.1.1` (R2) | PC1, PC2 — DHCP |
-| R3 Gi0/3 ↔ SW2 | `20.1.1.0/24` | `20.1.1.1` (R3) | PC3 — DHCP |
+| LAN Segment    |    Network    |     Gateway     | Devices                       |
+| :------------- | :-----------: | :-------------: | :---------------------------- |
+| R2 Gi0/3 ↔ SW1 | `10.1.1.0/24` | `10.1.1.1` (R2) | PC1, PC2 — DHCP               |
+| R3 Gi0/3 ↔ SW2 | `20.1.1.0/24` | `20.1.1.1` (R3) | PC3 — DHCP                    |
 | R4 Gi0/3 ↔ SW3 | `30.1.1.0/24` | `30.1.1.1` (R4) | PC4, DHCP Server `30.1.1.100` |
 
 ---
 
 ## 🔄 Loopbacks & OSPF
 
-| Router | Loopback | OSPF Process ID | OSPF Router ID | Area |
-|:---:|:---:|:---:|:---:|:---:|
-| **R1** | `1.1.1.1/32` | `100` | `1.1.1.1` | Area 0 |
-| **R2** | `2.2.2.2/32` | `200` | `2.2.2.2` | Area 0 |
-| **R3** | `3.3.3.3/32` | `300` | `3.3.3.3` | Area 0 |
-| **R4** | `4.4.4.4/32` | `400` | `4.4.4.4` | Area 0 |
+| Router |   Loopback   | OSPF Process ID | OSPF Router ID |  Area  |
+| :----: | :----------: | :-------------: | :------------: | :----: |
+| **R1** | `1.1.1.1/32` |      `100`      |    `1.1.1.1`   | Area 0 |
+| **R2** | `2.2.2.2/32` |      `200`      |    `2.2.2.2`   | Area 0 |
+| **R3** | `3.3.3.3/32` |      `300`      |    `3.3.3.3`   | Area 0 |
+| **R4** | `4.4.4.4/32` |      `400`      |    `4.4.4.4`   | Area 0 |
 
 ---
 
 # 🔧 Technologies
 
-- **EVE-NG**
-- **Cisco IOS**
-- **IPv4**
-- **OSPFv2**
-- **OSPF Area 0**
-- **Full-Mesh Routing**
-- **Static IP Addressing**
-- **DHCP**
-- **DHCP Relay** (`ip helper-address`)
-- **IPv4 Subnetting**
-- **Ethernet**
-- **ARP**
-- **ICMP**
-- **SSH**
-- **Cisco IOS CLI**
-- **Routing Table Verification**
-- **Network Connectivity & Troubleshooting**
+* **EVE-NG**
+* **Cisco IOS**
+* **IPv4**
+* **OSPFv2**
+* **OSPF Area 0**
+* **Full-Mesh Routing**
+* **Static IP Addressing**
+* **DHCP**
+* **DHCP Relay** (`ip helper-address`)
+* **IPv4 Subnetting**
+* **Ethernet**
+* **ARP**
+* **ICMP**
+* **SSH**
+* **Cisco IOS CLI**
+* **Routing Table Verification**
+* **Network Connectivity & Troubleshooting**
 
 ---
 
-# 🛠️ TASK TO PERFORM
+# 🛠️ Task to Perform
 
 ## 🔹 Phase 1 — Basic Interface & OSPF Configuration
-
----
 
 ### 📍 1.1 R1 — Interface & OSPF Configuration
 
@@ -105,7 +134,7 @@ Configure R1's inter-router interfaces, Loopback interface, and OSPF process to 
 
 ```cisco
 show ip interface brief
-````
+```
 
 **OSPF Process**
 
@@ -129,7 +158,7 @@ Configure R2's inter-router interfaces, LAN interface, Loopback interface, and O
 
 <br>
 
-<img width="1696" height="995" alt="R2 OSPF Configuration" src="https://github.com/user-attachments/assets/cdac589f-4afb-4db4-9bd9-e638066bca4f" />
+<img width="1696" height="995" alt="R2 OSPF Configuration" src="https://github.com/user-attachments/assets/cdac589f-4afb-4db4-9e638066bca4f" />
 
 <br>
 
@@ -256,9 +285,9 @@ All four routers have been configured with their required Layer 3 interfaces, Lo
 
 # 🔹 Phase 2 — Inter-LAN Connectivity Verification
 
-## 📍 2.1 PC3 → PC1 End-to-End Connectivity Test
+### 📍 2.1 PC3 → PC1 End-to-End Connectivity Test
 
-### 🎯 Objective
+#### 🎯 Objective
 
 Verify end-to-end connectivity between **PC3 (`20.1.1.10`)** and **PC1 (`10.1.1.10`)** across different LAN networks using the configured **OSPF Area 0** routing topology.
 
@@ -348,7 +377,7 @@ Because DHCP client requests are initially sent as **broadcasts** and routers do
 |    **PC3**    | `20.1.1.0/24` |    `20.1.1.1`   | `30.1.1.100` |
 |    **PC4**    | `30.1.1.0/24` |    `30.1.1.1`   | `30.1.1.100` |
 
-### 🌐 DHCP Server Information
+### 📋 DHCP Server Information
 
 | Parameter       |           Configuration           |
 | :-------------- | :-------------------------------: |
@@ -365,7 +394,6 @@ Because DHCP client requests are initially sent as **broadcasts** and routers do
 | **DHCP Relay**  |             Configured            |
 | **Routing**     |            OSPF Area 0            |
 
-
 ### ⚙️ DHCP Pool Configuration
 
 <br>
@@ -374,7 +402,7 @@ Because DHCP client requests are initially sent as **broadcasts** and routers do
 
 <br>
 
-<img width="1791" height="692" alt="Screenshot 2026-10-01 185117" src="https://github.com/user-attachments/assets/58054a57-eaa4-4a3d-8f09-f2e8ab76ccbc" />
+<img width="1791" height="692" alt="Screenshot 2026-10-01 185117" src="https://github.com/user-attachments/assets/58054a57-eaa3-4a3d-8f09-f2e8ab76ccbc" />
 
 <br>
 
@@ -466,7 +494,7 @@ write memory
 
 <br>
 
-<img width="1905" height="1011" alt="Screenshot 2026-10-01 185332" src="https://github.com/user-attachments/assets/577331cc-238f-4891-9216-da562fed8b34" />
+<img width="1905" height="1011" alt="Screenshot 2026-10-01 185332" src="https://github.com/user-attachments/assets/577331cc-2386-4891-8e35-4f61a530abbf" />
 
 ---
 
@@ -573,7 +601,7 @@ Configure local user authentication and restrict remote VTY access to **SSH only
 
 <br>
 
-<img width="1417" height="565" alt="Screenshot 2026-10-01 192354" src="https://github.com/user-attachments/assets/162e6e81-ccc9-4bc4-81dd-66db1ff443d2" />
+<img width="1417" height="565" alt="Screenshot 2026-10-01 192354" src="https://github.com/user-attachments/assets/162e6e81-ccc4-4bc4-81dd-66db1ff443d2" />
 
 <br>
 
@@ -583,7 +611,7 @@ Verify that SSH is enabled and the VTY lines are configured for SSH-only access.
 
 <br>
 
-<img width="1331" height="332" alt="Screenshot 2026-10-01 192413" src="https://github.com/user-attachments/assets/9a523e11-ae8d-4f88-9536-88e989627a6d" />
+<img width="1331" height="332" alt="Screenshot 2026-10-01 192413" src="https://github.com/user-attachments/assets/9a523e11-ccc4-4bc4-81dd-66db1ff443d2" />
 
 ---
 
@@ -597,7 +625,7 @@ Configure local authentication and restrict remote management access to SSH.
 
 <br>
 
-<img width="1492" height="907" alt="Screenshot 2026-10-01 192640" src="https://github.com/user-attachments/assets/3a1d5101-43b2-4585-bec4-f003cf20b835" />
+<img width="1492" height="907" alt="Screenshot 2026-10-01 192640" src="https://github.com/user-attachments/assets/3a1d5101-43b2-4a6f-a303-bb8139e229c6" />
 
 <br>
 
@@ -670,15 +698,7 @@ Verify SSH status and VTY configuration on R4.
 
 ---
 
-<br>
-<br>
-Yes. Now the result is clear: **the issue was that SW2 needed Layer-3 routing enabled with a default route to R3**. Your screenshots now prove that SW2 can reach the remote router networks and establish SSH sessions.
-
-For your GitHub README, I recommend adding the following **after 4.4 SSH Configuration on R4**, and **before the final Phase 4 Result**.
-
----
-
-# 📍 4.5 Layer 3 Routing on SW2
+## 📍 4.5 Layer 3 Routing on SW2
 
 ### 🎯 Objective
 
@@ -702,6 +722,7 @@ write memory
 
 <br>
 <br>
+
 <img width="1265" height="650" alt="Screenshot 2026-10-04 001610" src="https://github.com/user-attachments/assets/ba954f76-20e6-434d-a4ab-07ef4b2e5778" />
 
 <br>
@@ -729,16 +750,15 @@ The default route allows SW2 to forward traffic for destinations that are not di
 
 <br>
 <br>
+
 <img width="1437" height="757" alt="Screenshot 2026-10-04 001542" src="https://github.com/user-attachments/assets/9c6c4259-2795-4d50-b66f-70d58de21ddd" />
 
-
 <br>
-<br> 
-
+<br>
 
 ---
 
-# 📍 4.6 SSH Connectivity Verification from SW2
+## 📍 4.6 SSH Connectivity Verification from SW2
 
 ### 🎯 Objective
 
@@ -754,7 +774,7 @@ Successful login to each router confirms:
 
 ---
 
-## 🔹 R1 SSH Verification
+### 🔹 R1 SSH Verification
 
 From SW2:
 
@@ -769,6 +789,7 @@ R1#
 ```
 
 This confirms successful SSH access from SW2 to R1.
+
 <br>
 <br>
 
@@ -776,9 +797,10 @@ This confirms successful SSH access from SW2 to R1.
 
 <br>
 <br>
+
 ---
 
-## 🔹 R2 SSH Verification
+### 🔹 R2 SSH Verification
 
 From SW2:
 
@@ -793,15 +815,18 @@ R2#
 ```
 
 This confirms successful SSH access from SW2 to R2.
+
 <br>
 <br>
+
 <img width="960" height="582" alt="Screenshot 2026-10-04 002021" src="https://github.com/user-attachments/assets/6737a2d0-215c-45ac-a327-81b227d21b13" />
+
 <br>
 <br>
 
 ---
 
-## 🔹 R3 SSH Verification
+### 🔹 R3 SSH Verification
 
 From SW2:
 
@@ -816,15 +841,18 @@ R3#
 ```
 
 This confirms successful SSH access from SW2 to R3.
+
 <br>
 <br>
+
 <img width="932" height="472" alt="Screenshot 2026-10-04 002150" src="https://github.com/user-attachments/assets/9b89bbfb-f3ac-460f-a62d-79730fe0983f" />
+
 <br>
 <br>
 
 ---
 
-## 🔹 R4 SSH Verification
+### 🔹 R4 SSH Verification
 
 From SW2:
 
@@ -839,12 +867,15 @@ R4#
 ```
 
 This confirms successful SSH access from SW2 to R4.
+
 <br>
 <br>
+
 <img width="922" height="493" alt="Screenshot 2026-10-04 002301" src="https://github.com/user-attachments/assets/aec32fdb-1114-4bbc-8f4e-d62abc1367ba" />
 
 <br>
 <br>
+
 ---
 
 # 📊 SSH Connectivity Verification
@@ -868,13 +899,7 @@ SSH connectivity was successfully verified from **SW2 to R1, R2, R3, and R4**, d
 
 ---
 
-
-<br>
-<br>
-
-
-
-## 🔄  SSH Authentication Flow
+## 🔄 SSH Authentication Flow
 
 ```mermaid
 flowchart TD
@@ -911,7 +936,7 @@ flowchart TD
     K --> M["Remote Router Management"]
 ```
 
-
+---
 
 ## 🧠 Phase 4 Result
 
@@ -935,6 +960,3 @@ PC1 and PC2 successfully communicated through the Layer 2 switch within the same
 * MAC address learning
 * ICMP
 * Basic Layer 2 communication
-
-```
-
