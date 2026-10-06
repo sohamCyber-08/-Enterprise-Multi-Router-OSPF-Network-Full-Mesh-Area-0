@@ -1041,19 +1041,56 @@ DHCP relay point.
 
 ## 🧠 Root Cause Analysis
 
-The centralized DHCP server was operational and contained a DHCP pool for
-the R3 client network.
+The centralized DHCP server was operational and already had a DHCP pool
+configured for the R3 client network `20.1.1.0/24`.
 
-However, the DHCP request from the client was not being successfully
-forwarded from the R3 LAN toward the centralized DHCP server.
+However, the R3 client-facing interface `GigabitEthernet0/3` did not
+initially have a DHCP relay configuration.
 
-The investigation identified the DHCP relay configuration on the R3
-client-facing interface as the critical point in the DHCP forwarding path.
+Because the DHCP client and centralized DHCP server were located on
+different Layer 3 networks, the client's DHCP broadcast could not cross
+the router by itself.
 
-### 📸 Evidence — DHCP Relay Verification
-<img width="1882" height="791" alt="Screenshot 2026-10-05 010023" src="https://github.com/user-attachments/assets/4e74d4ab-b64f-4280-9006-69d87709c004" />
+The missing DHCP relay configuration on R3 `Gi0/3` prevented the DHCP
+request from being forwarded to the centralized DHCP server.
+
+<br>
+<br>
+<img width="1882" height="791" alt="Screenshot 2026-10-05 010023" src="https://github.com/user-attachments/assets/34ae843f-289a-4dcb-8a02-5f1207e2ade7" />
+
+<br>
+<br>
 
 
+### 📌 Identified Root Cause
+
+**R3 `GigabitEthernet0/3` — DHCP relay (`ip helper-address`) was not
+configured.**
+
+### 🔄 DHCP Request Path Before Fix
+
+**VPCS Client**  
+`20.1.1.0/24`
+
+↓ DHCP Broadcast
+
+**R3 Gi0/3**  
+`20.1.1.1/24`
+
+↓ ❌ DHCP Relay Not Configured
+
+**DHCP Server**  
+`30.1.1.100`
+
+As a result, the client reported that it could not find a DHCP server.
+
+### 📸 Evidence — R3 Configuration Check
+<img width="1846" height="135" alt="Screenshot 2026-10-05 010216" src="https://github.com/user-attachments/assets/5fcc7740-e3d0-44e5-888f-ab31a0f3fdd8" />
+
+
+
+The verification confirmed that the DHCP relay configuration on the R3
+client-facing interface required correction.
 
 ---
 
@@ -1072,23 +1109,25 @@ The configuration was then saved and verified.
 
 ---
 
-## 🖥️ DHCP Server Verification
+## 🔎 DHCP Relay Verification — R3
 
-The centralized DHCP server was checked to verify that the DHCP pool for
-the R3 network was available.
+After configuring the DHCP relay on R3 `Gi0/3`, the configuration was
+verified to confirm that DHCP requests from the `20.1.1.0/24` client
+network are forwarded to the centralized DHCP server at `30.1.1.100`.
 
-The server contained a dedicated pool for the `20.1.1.0/24` client
-network.
-
-A leased address was also visible, confirming that the DHCP server was
-actively allocating addresses to clients.
-
-### 📸 Evidence — DHCP Pool and Lease
-
-<img width="1882" height="791" alt="Screenshot 2026-10-05 010023" src="https://github.com/user-attachments/assets/379bb3e0-c062-43ce-a263-8fcc3bff2761" />
+### 📸 Evidence — R3 DHCP Relay Verification
+<img width="1575" height="166" alt="Screenshot 2026-10-05 010549" src="https://github.com/user-attachments/assets/0078bacb-e073-413f-b531-8ad3af259201" />
 
 
----
+
+**Verification Result:**  
+✅ DHCP relay is configured on R3 `Gi0/3` and points to the centralized
+DHCP server `30.1.1.100`.
+
+
+<br>
+<br>
+
 
 ## ✅ Post-Fix Verification
 
@@ -1102,7 +1141,8 @@ The client received:
 
 ### 📸 Evidence — Successful DHCP Assignment
 
-<img width="1511" height="217" alt="Screenshot 2026-10-05 010609" src="https://github.com/user-attachments/assets/71e77e87-1778-464c-a62f-4cae9f10f291" />
+<img width="1511" height="217" alt="Screenshot 2026-10-05 010609" src="https://github.com/user-attachments/assets/7df14ae9-c61c-4165-b2a2-894dfc7d1427" />
+
 
 
 This confirmed that the DHCP request successfully travelled from the
