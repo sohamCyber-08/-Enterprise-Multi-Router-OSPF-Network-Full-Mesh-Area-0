@@ -2,9 +2,11 @@
 
 Full-Mesh Area 0 • Centralized DHCP • SSH-Only Remote Management
 
+
 Enterprise Network Simulation | Cisco IOS | EVE-NG | IPv4 | OSPFv2
 
 📑 Project Navigation
+
 
 🎯 Project Objective
 
