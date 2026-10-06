@@ -974,11 +974,25 @@ Remote management access is restricted to **SSH**, providing encrypted communica
 
 
 
+
+
 # 🔧 Phase 5 — Network Troubleshooting & Verification
 
-## 🔧 Troubleshooting Case 1 — DHCP Relay Failure
+### 🛠️ Diagnosing Routing, Reachability, and DHCP Relay Issues
 
-### 📡 Diagnosing DHCP Address Assignment Across a Routed Network
+This phase focuses on identifying, resolving, and verifying real network
+connectivity issues encountered during the implementation of the enterprise
+OSPF network.
+
+The troubleshooting process followed a structured approach:
+
+**Problem → Investigation → Root Cause → Resolution → Verification**
+
+---
+
+# 📡 Troubleshooting Case 1 — DHCP Relay Failure
+
+### 🔎 Diagnosing DHCP Address Assignment Across a Routed Network
 
 During DHCP verification, the client connected to the R3 LAN was initially
 unable to obtain an IP address from the centralized DHCP server.
@@ -1001,7 +1015,6 @@ find a DHCP server.
 
 <img width="612" height="347" alt="Screenshot 2026-10-05 005857" src="https://github.com/user-attachments/assets/4b2cae4a-0e97-42fa-a08f-dca7529e34b8" />
 
-
 ### 🔎 Observation
 
 The client was connected to the `20.1.1.0/24` network, while the centralized
@@ -1020,7 +1033,7 @@ interface needed to be investigated.
 The R3 LAN interface was examined because it acts as the default gateway
 for the client network.
 
-### R3 Client Network
+### 📡 R3 Client Network
 
 | Component | Address |
 |---|---|
@@ -1034,8 +1047,6 @@ DHCP relay point.
 ### 📸 Evidence — R3 LAN Interface
 
 <img width="811" height="131" alt="Screenshot 2026-10-05 010244" src="https://github.com/user-attachments/assets/5cc31139-fc2e-47c3-a382-5a97ec8417cd" />
-
-
 
 ---
 
@@ -1054,13 +1065,9 @@ the router by itself.
 The missing DHCP relay configuration on R3 `Gi0/3` prevented the DHCP
 request from being forwarded to the centralized DHCP server.
 
-<br>
-<br>
+### 📸 Evidence — DHCP Server / Pool Verification
+
 <img width="1882" height="791" alt="Screenshot 2026-10-05 010023" src="https://github.com/user-attachments/assets/34ae843f-289a-4dcb-8a02-5f1207e2ade7" />
-
-<br>
-<br>
-
 
 ### 📌 Identified Root Cause
 
@@ -1072,12 +1079,12 @@ configured.**
 **VPCS Client**  
 `20.1.1.0/24`
 
-↓ DHCP Broadcast
+⬇️ DHCP Broadcast
 
 **R3 Gi0/3**  
 `20.1.1.1/24`
 
-↓ ❌ DHCP Relay Not Configured
+⬇️ ❌ DHCP Relay Not Configured
 
 **DHCP Server**  
 `30.1.1.100`
@@ -1085,9 +1092,8 @@ configured.**
 As a result, the client reported that it could not find a DHCP server.
 
 ### 📸 Evidence — R3 Configuration Check
+
 <img width="1846" height="135" alt="Screenshot 2026-10-05 010216" src="https://github.com/user-attachments/assets/5fcc7740-e3d0-44e5-888f-ab31a0f3fdd8" />
-
-
 
 The verification confirmed that the DHCP relay configuration on the R3
 client-facing interface required correction.
@@ -1103,9 +1109,8 @@ forwarded to the centralized DHCP server at `30.1.1.100`.
 The configuration was then saved and verified.
 
 ### 📸 Evidence — DHCP Relay Configuration
+
 <img width="1452" height="407" alt="Screenshot 2026-10-05 010444" src="https://github.com/user-attachments/assets/abbd26d2-c883-4f3e-84a7-cc538ed6c3a9" />
-
-
 
 ---
 
@@ -1116,18 +1121,14 @@ verified to confirm that DHCP requests from the `20.1.1.0/24` client
 network are forwarded to the centralized DHCP server at `30.1.1.100`.
 
 ### 📸 Evidence — R3 DHCP Relay Verification
+
 <img width="1575" height="166" alt="Screenshot 2026-10-05 010549" src="https://github.com/user-attachments/assets/0078bacb-e073-413f-b531-8ad3af259201" />
-
-
 
 **Verification Result:**  
 ✅ DHCP relay is configured on R3 `Gi0/3` and points to the centralized
 DHCP server `30.1.1.100`.
 
-
-<br>
-<br>
-
+---
 
 ## ✅ Post-Fix Verification
 
@@ -1143,8 +1144,6 @@ The client received:
 
 <img width="1511" height="217" alt="Screenshot 2026-10-05 010609" src="https://github.com/user-attachments/assets/7df14ae9-c61c-4165-b2a2-894dfc7d1427" />
 
-
-
 This confirmed that the DHCP request successfully travelled from the
 client network through R3 to the centralized DHCP server and that the
 DHCP response successfully returned to the client.
@@ -1155,17 +1154,17 @@ DHCP response successfully returned to the client.
 
 The final working DHCP path can be represented as:
 
-**VPCS Client**
+**VPCS Client**  
 `20.1.1.0/24`
 
 ⬇️ DHCP Broadcast
 
-**R3 — DHCP Relay**
+**R3 — DHCP Relay**  
 `20.1.1.1`
 
 ⬇️ Relayed DHCP Request
 
-**Centralized DHCP Server**
+**Centralized DHCP Server**  
 `30.1.1.100`
 
 ⬇️ DHCP Response
@@ -1178,7 +1177,7 @@ The final working DHCP path can be represented as:
 
 ⬇️
 
-**20.1.1.4/24 Assigned**
+**`20.1.1.4/24` Assigned**
 
 ---
 
@@ -1186,22 +1185,22 @@ The final working DHCP path can be represented as:
 
 The issue was isolated using the following process:
 
-**DHCP Request**
-↓
-**Observe Failure**
-↓
-**Verify Client Network**
-↓
-**Verify R3 Gateway Interface**
-↓
-**Check DHCP Relay Function**
-↓
-**Verify Centralized DHCP Pool**
-↓
-**Restore DHCP Relay Forwarding**
-↓
-**Request DHCP Address Again**
-↓
+**DHCP Request**  
+↓  
+**Observe Failure**  
+↓  
+**Verify Client Network**  
+↓  
+**Verify R3 Gateway Interface**  
+↓  
+**Check DHCP Relay Function**  
+↓  
+**Verify Centralized DHCP Pool**  
+↓  
+**Restore DHCP Relay Forwarding**  
+↓  
+**Request DHCP Address Again**  
+↓  
 **Verify Assigned IP and Gateway**
 
 ---
@@ -1218,42 +1217,13 @@ The DHCP troubleshooting process successfully demonstrated:
 - ✅ Correct default-gateway assignment
 - ✅ End-to-end DHCP communication across routed networks
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 🌐 Troubleshooting Case 2 — Remote Network Reachability
 
 ### 🛠️ Diagnosing Reachability and Validating Network Connectivity
 
-This phase focuses on troubleshooting and validating the communication
+This case focuses on troubleshooting and validating the communication
 between the management switch and the routers within the enterprise
 OSPF network.
 
@@ -1265,7 +1235,7 @@ apply the required correction, and verify the result.
 
 ## 🎯 Objective
 
-The main objectives of this phase were:
+The main objectives of this case were:
 
 - Verify local and remote network connectivity
 - Identify communication failures
@@ -1309,8 +1279,6 @@ However, attempts to reach the remote router loopbacks were unsuccessful.
 
 <img width="1866" height="467" alt="Screenshot 2026-10-05 004306" src="https://github.com/user-attachments/assets/60c062ab-2a28-42f8-a348-8b48a2127da8" />
 
-
-
 **Observation:**  
 Local connectivity was successful, but remote loopback connectivity
 failed. This indicated that the issue was related to reaching networks
@@ -1335,7 +1303,6 @@ forwarding path.
 
 <img width="1722" height="423" alt="Screenshot 2026-10-05 004401" src="https://github.com/user-attachments/assets/f3f2c840-d147-45c3-a382-0e2be911e645" />
 
-
 **Finding:**  
 The absence of a suitable default path prevented the switch from
 forwarding traffic toward remote destinations.
@@ -1357,7 +1324,6 @@ forwarding path was present.
 
 <img width="1395" height="832" alt="Screenshot 2026-10-05 004800" src="https://github.com/user-attachments/assets/7aaa67b5-ff05-4f98-a7af-c0d44215adef" />
 
-
 **Result:**  
 The routing table now contained a valid default path toward the upstream
 router, allowing traffic destined for remote networks to be forwarded
@@ -1375,10 +1341,7 @@ traffic beyond its directly connected network.
 
 ### 📸 Evidence — Successful Connectivity
 
-
 <img width="1318" height="277" alt="Screenshot 2026-10-06 193658" src="https://github.com/user-attachments/assets/8badbddf-de0c-47b4-a37d-0e8fcdfa02c5" />
-
-
 
 **Verification Result:**
 
@@ -1403,7 +1366,6 @@ remote session.
 ### 📸 Evidence — SSH Management Access
 
 <img width="1841" height="825" alt="Screenshot 2026-10-05 004854" src="https://github.com/user-attachments/assets/9f5a44d5-0a3b-4473-aaa3-1c211aca45a0" />
-
 
 **Verification Result:**
 
@@ -1440,10 +1402,10 @@ the cause of the problem.
 
 ## 🏁 Final Outcome
 
-The troubleshooting phase successfully demonstrated practical network
+The troubleshooting case successfully demonstrated practical network
 troubleshooting and verification skills.
 
-### Key Results
+### 📌 Key Results
 
 - ✅ Local connectivity verified
 - ✅ Remote reachability problem identified
@@ -1453,14 +1415,9 @@ troubleshooting and verification skills.
 - ✅ Remote router loopbacks successfully reached
 - ✅ SSH management connectivity verified
 
-This phase validated that the enterprise network was not only configured
+This case validated that the enterprise network was not only configured
 but also **tested, analyzed, and verified from an administrator's
 perspective**.
-
-
-
-
-
 
 
 
