@@ -957,6 +957,7 @@ Verify SSH status and VTY configuration on R4.
 
 <img width="1151" height="355" alt="Screenshot 2026-10-01 193105" src="https://github.com/user-attachments/assets/8e21bbc4-79c4-431e-a6b0-d8938ad52823" />
 
+
 📊 SSH Configuration Verification
 
 Router
