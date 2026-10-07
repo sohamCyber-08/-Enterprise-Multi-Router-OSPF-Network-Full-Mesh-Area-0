@@ -1282,34 +1282,35 @@ The DHCP troubleshooting process successfully demonstrated:
 
 
 
+## 🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity
 
-### 🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity
+### 📡 Diagnosing Network Reachability Across the Enterprise OSPF Network
 
-This phase focuses on troubleshooting and validating the communication
+This phase focuses on troubleshooting and validating communication
 between the management switch and the routers within the enterprise
 OSPF network.
 
 The objective was not only to verify that the network was operational,
-but also to identify connectivity problems, analyze the routing behavior,
+but also to identify connectivity problems, analyze routing behavior,
 apply the required correction, and verify the result.
 
 ---
 
-## 🎯 Objective
+### 🎯 Objective
 
 The main objectives of this phase were:
 
-- Verify local and remote network connectivity
-- Identify communication failures
-- Analyze the available routing information
-- Determine why remote router loopbacks were unreachable
-- Restore the required network reachability
-- Verify end-to-end connectivity after the correction
-- Validate remote router management through SSH
+* Verify local and remote network connectivity
+* Identify communication failures
+* Analyze the available routing information
+* Determine why remote router loopbacks were unreachable
+* Restore the required network reachability
+* Verify end-to-end connectivity after the correction
+* Validate remote router management through SSH
 
 ---
 
-## 🔍 Troubleshooting Scenario
+### 🔍 Troubleshooting Scenario
 
 During the initial verification, the management switch was able to
 communicate with the local/upstream network but was unable to reach
@@ -1317,33 +1318,33 @@ remote router loopback interfaces.
 
 The remote loopbacks represent the management addresses of the routers:
 
-- R1 — `1.1.1.1/32`
-- R2 — `2.2.2.2/32`
-- R3 — `3.3.3.3/32`
-- R4 — `4.4.4.4/32`
+| Router | Loopback     |
+| ------ | ------------ |
+| R1     | `1.1.1.1/32` |
+| R2     | `2.2.2.2/32` |
+| R3     | `3.3.3.3/32` |
+| R4     | `4.4.4.4/32` |
 
 This indicated that basic local connectivity was working, while
 communication toward remote networks required further investigation.
 
 ---
 
-## 📊 Initial Connectivity Verification
+### 📊 Initial Connectivity Verification
 
-The first step was to test connectivity from the switch toward both
-local and remote destinations.
+The first step was to test connectivity from the management switch
+toward both local and remote destinations.
 
 The switch successfully reached the local router interface, confirming
 that the directly connected network was operational.
 
 However, attempts to reach the remote router loopbacks were unsuccessful.
 
-### 📸 Evidence — Initial Connectivity Test
+#### 📸 Evidence — Initial Connectivity Test
 
 <img width="1866" height="467" alt="Screenshot 2026-10-05 004306" src="https://github.com/user-attachments/assets/60c062ab-2a28-42f8-a348-8b48a2127da8" />
 
-
-
-**Observation:**  
+**Observation:**
 Local connectivity was successful, but remote loopback connectivity
 failed. This indicated that the issue was related to reaching networks
 beyond the directly connected segment rather than a complete loss of
@@ -1351,10 +1352,11 @@ connectivity.
 
 ---
 
-## 🧠 Root Cause Analysis
+### 🧠 Root Cause Analysis
 
-The routing information on the switch was examined to determine whether
-a valid path existed toward the remote router loopbacks.
+The routing information on the management switch was examined to
+determine whether a valid path existed toward the remote router
+loopbacks.
 
 The investigation showed that the switch had knowledge of its directly
 connected network but did not have an appropriate route for destinations
@@ -1363,67 +1365,62 @@ outside that network.
 As a result, packets destined for remote router loopbacks had no suitable
 forwarding path.
 
-### 📸 Evidence — Routing Table Verification
+#### 📸 Evidence — Routing Table Verification
 
 <img width="1722" height="423" alt="Screenshot 2026-10-05 004401" src="https://github.com/user-attachments/assets/f3f2c840-d147-45c3-a382-0e2be911e645" />
 
-
-**Finding:**  
+**Finding:**
 The absence of a suitable default path prevented the switch from
 forwarding traffic toward remote destinations.
 
 ---
 
-## 🛠️ Resolution
+### 🛠️ Resolution
 
 A suitable default forwarding path was established toward the upstream
 router.
 
-This allowed the switch to forward traffic for destinations that were
-not directly present in its routing table.
+This allowed the management switch to forward traffic for destinations
+that were not directly present in its routing table.
 
 The routing table was then verified again to confirm that the required
 forwarding path was present.
 
-### 📸 Evidence — Updated Routing Information
+#### 📸 Evidence — Updated Routing Information
 
 <img width="1395" height="832" alt="Screenshot 2026-10-05 004800" src="https://github.com/user-attachments/assets/7aaa67b5-ff05-4f98-a7af-c0d44215adef" />
 
-
-**Result:**  
+**Result:**
 The routing table now contained a valid default path toward the upstream
 router, allowing traffic destined for remote networks to be forwarded
 through the enterprise routing infrastructure.
 
 ---
 
-## ✅ Post-Fix Connectivity Verification
+### 🔎 Post-Fix Connectivity Verification
 
 After correcting the routing path, connectivity was tested again toward
 the remote router loopbacks.
 
-The successful responses confirmed that the switch could now forward
-traffic beyond its directly connected network.
+The successful responses confirmed that the management switch could now
+forward traffic beyond its directly connected network.
 
-### 📸 Evidence — Successful Connectivity
-
+#### 📸 Evidence — Successful Connectivity
 
 <img width="1318" height="277" alt="Screenshot 2026-10-06 193658" src="https://github.com/user-attachments/assets/8badbddf-de0c-47b4-a37d-0e8fcdfa02c5" />
 
-
-
 **Verification Result:**
 
-| Verification | Result |
-|---|---|
+| Verification              | Result       |
+| ------------------------- | ------------ |
 | Local router reachability | ✅ Successful |
-| R1 loopback reachability | ✅ Successful |
-| R2 loopback reachability | ✅ Successful |
-| Remote network forwarding | ✅ Verified |
+| R1 loopback reachability  | ✅ Successful |
+| R2 loopback reachability  | ✅ Successful |
+| Remote network forwarding | ✅ Verified   |
 
 ---
 
-## 🔐 SSH Management Verification
+### 🔐 SSH Management Verification
 
 Once IP connectivity was restored, SSH connectivity was tested to verify
 that the network could support secure remote administration.
@@ -1432,24 +1429,24 @@ The successful SSH session confirmed that the management switch could
 reach the router's management address and establish an authenticated
 remote session.
 
-### 📸 Evidence — SSH Management Access
+#### 📸 Evidence — SSH Management Access
 
 <img width="1841" height="825" alt="Screenshot 2026-10-05 004854" src="https://github.com/user-attachments/assets/9f5a44d5-0a3b-4473-aaa3-1c211aca45a0" />
 
-
 **Verification Result:**
 
-- IP reachability — ✅ Verified
-- SSH service reachability — ✅ Verified
-- Authentication — ✅ Successful
-- Remote management — ✅ Operational
+* IP reachability — ✅ Verified
+* SSH service reachability — ✅ Verified
+* Authentication — ✅ Successful
+* Remote management — ✅ Operational
 
 ---
 
-## 🧠 Troubleshooting Approach
+### 🧠 Troubleshooting Methodology
 
-The issue was isolated using a structured troubleshooting methodology:
-### 🔄 Routing & SSH Troubleshooting Flow
+The issue was isolated using the following process:
+
+#### 🔄 Routing & SSH Troubleshooting Flow
 
 ```text
 ┌──────────────────────────────┐
@@ -1461,7 +1458,7 @@ The issue was isolated using a structured troubleshooting methodology:
 └──────────────┬───────────────┘
                ↓
 ┌──────────────────────────────┐
-│ Analyze Routing Information   │
+│ Analyze Routing Information  │
 └──────────────┬───────────────┘
                ↓
 ┌──────────────────────────────┐
@@ -1474,43 +1471,37 @@ The issue was isolated using a structured troubleshooting methodology:
 └──────────────┬───────────────┘
                ↓
 ┌──────────────────────────────┐
-│      Retest Connectivity      │
+│      Retest Connectivity     │
 └──────────────┬───────────────┘
                ↓
 ┌──────────────────────────────┐
-│     Verify SSH Management     │
+│     Verify SSH Management    │
 └──────────────────────────────┘
 ```
 
 **Troubleshooting Sequence:**
-`Connectivity → Destination → Routing Table → Forwarding Path → Configuration → Rete
+`Connectivity → Destination → Routing Table → Forwarding Path → Configuration → Retest → SSH Verification`
 
-## 🏁 Final Outcome
+---
+
+### 🏁 Final Outcome
 
 The troubleshooting phase successfully demonstrated practical network
 troubleshooting and verification skills.
 
-### Key Results
+**Key Results:**
 
-- ✅ Local connectivity verified
-- ✅ Remote reachability problem identified
-- ✅ Routing information analyzed
-- ✅ Missing forwarding path identified
-- ✅ Routing path corrected
-- ✅ Remote router loopbacks successfully reached
-- ✅ SSH management connectivity verified
+* ✅ Local connectivity verified
+* ✅ Remote reachability problem identified
+* ✅ Routing information analyzed
+* ✅ Missing forwarding path identified
+* ✅ Routing path corrected
+* ✅ Remote router loopbacks successfully reached
+* ✅ SSH management connectivity verified
 
 This phase validated that the enterprise network was not only configured
 but also **tested, analyzed, and verified from an administrator's
 perspective**.
-
-
-
-
-
-
-
-
 
 
 
