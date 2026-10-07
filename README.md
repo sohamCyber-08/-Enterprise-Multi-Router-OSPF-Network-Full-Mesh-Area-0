@@ -249,6 +249,41 @@ show ip ospf
 
 ---
 
+
+
+📡 1.5 Wireshark — OSPF Packet Capture & Analysis
+🎯 Objective
+
+Capture and analyze OSPF control-plane traffic using Wireshark to verify that OSPF Hello packets and other OSPF messages are exchanged between neighboring routers.
+
+🔬 Packet Capture
+
+Wireshark was used to capture traffic on the inter-router link during OSPF neighbor establishment. The capture provides packet-level evidence of OSPF communication and allows verification of the OSPF protocol independently from Cisco IOS commands.
+
+Wireshark Display Filter
+
+ospf
+🔍 What Was Verified
+OSPF Hello packets exchanged between neighboring routers
+OSPF Router IDs visible in captured packets
+OSPF Area 0 information
+OSPF neighbor communication over the inter-router link
+OSPF packet types and protocol details
+<br>
+<br>
+📸 Wireshark Capture
+<img width="1895" height="817" alt="Screenshot 2026-10-05 012449" src="https://github.com/user-attachments/assets/e4fe1191-61a6-4589-b72c-43c4afe2988c" />
+
+
+<br>
+Packet Analysis: The Wireshark capture confirms that OSPF control-plane packets are being exchanged between the routers, providing packet-level validation of the OSPF Area 0 configuration.
+
+
+
+
+
+
+
 ## ✅ Phase 1 — Completion Status
 
 | Router | Interfaces | Loopback | OSPF Area 0 | Verification |
