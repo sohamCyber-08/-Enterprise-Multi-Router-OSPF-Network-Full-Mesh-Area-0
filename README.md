@@ -4,9 +4,6 @@
 
 > **Enterprise Network Simulation | Cisco IOS | EVE-NG | IPv4 | OSPFv2**
 
---- 
-
-
 ## 📑 Project Navigation
 
 * [🎯 Project Objective](#-project-objective)
@@ -28,8 +25,6 @@
     * [🛠️ Troubleshooting Case 1 — DHCP Relay Failure](#️-troubleshooting-case-1--dhcp-relay-failure)
     * [🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity](#️-troubleshooting-case-2--diagnosing-reachability-and-validating-network-connectivity)
 * [🧠 Key Learning](#-key-learning)
-
-
 
 ---
 
@@ -1280,7 +1275,8 @@ The DHCP troubleshooting process successfully demonstrated:
 
 
 
-
+<br>
+<br>
 
 ## 🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity
 
