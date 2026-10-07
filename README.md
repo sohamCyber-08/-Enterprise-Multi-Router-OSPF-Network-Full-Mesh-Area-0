@@ -23,7 +23,13 @@
   * [🔹 Phase 2 — Inter-LAN Connectivity Verification](#-phase-2--inter-lan-connectivity-verification)
   * [🔹 Phase 3 — DHCP Relay Agent Configuration](#-phase-3--dhcp-relay-agent-configuration)
   * [🔹 Phase 4 — SSH-Only Secure Remote Management](#-phase-4--ssh-only-secure-remote-management)
+  * [🔧 Phase 5 — Network Troubleshooting & Verification](#-phase-5--network-troubleshooting--verification)
+
+    * [🛠️ Troubleshooting Case 1 — DHCP Relay Failure](#️-troubleshooting-case-1--dhcp-relay-failure)
+    * [🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity](#️-troubleshooting-case-2--diagnosing-reachability-and-validating-network-connectivity)
 * [🧠 Key Learning](#-key-learning)
+
+
 
 ---
 
@@ -1277,7 +1283,7 @@ The DHCP troubleshooting process successfully demonstrated:
 
 
 
-### 🛠️ Diagnosing Reachability and Validating Network Connectivity
+### 🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity
 
 This phase focuses on troubleshooting and validating the communication
 between the management switch and the routers within the enterprise
