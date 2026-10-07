@@ -278,7 +278,8 @@ ospf
 
 #### 📸 Wireshark Packet Capture
 
-<img width="1900" height="900" alt="Wireshark OSPF Packet Capture" src="YOUR-WIRESHARK-SCREENSHOT-LINK" />
+<img width="1895" height="817" alt="Screenshot 2026-10-05 012449" src="https://github.com/user-attachments/assets/6e2ada92-da62-4765-914b-cf70367fcaec" />
+
 
 <br>
 
