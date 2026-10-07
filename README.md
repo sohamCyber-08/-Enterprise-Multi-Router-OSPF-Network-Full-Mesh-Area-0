@@ -1186,6 +1186,7 @@ The final working DHCP path can be represented as:
 
 The issue was isolated using the following process:
 
+
 **DHCP Request**
 ↓
 **Observe Failure**
