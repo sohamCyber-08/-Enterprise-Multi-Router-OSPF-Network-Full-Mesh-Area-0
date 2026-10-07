@@ -1187,23 +1187,48 @@ The final working DHCP path can be represented as:
 The issue was isolated using the following process:
 
 
-**DHCP Request**
-↓
-**Observe Failure**
-↓
-**Verify Client Network**
-↓
-**Verify R3 Gateway Interface**
-↓
-**Check DHCP Relay Function**
-↓
-**Verify Centralized DHCP Pool**
-↓
-**Restore DHCP Relay Forwarding**
-↓
-**Request DHCP Address Again**
-↓
-**Verify Assigned IP and Gateway**
+### 🔄 DHCP Troubleshooting Flow
+
+```text
+┌──────────────────────────────┐
+│        DHCP Request          │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│       Observe Failure        │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│   Verify Client Network      │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Verify R3 Gateway Interface  │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│   Check DHCP Relay Function  │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Verify Centralized DHCP Pool │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Restore DHCP Relay Forwarding│
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│  Request DHCP Address Again  │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Verify Assigned IP & Gateway │
+└──────────────────────────────┘
+```
+
+**Troubleshooting Sequence:**
+`Client → Network → Gateway → DHCP Relay → DHCP Pool → Relay Restoration → DHCP Request → Verification`
 
 ---
 
