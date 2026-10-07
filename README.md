@@ -1443,26 +1443,41 @@ remote session.
 ## 🧠 Troubleshooting Approach
 
 The issue was isolated using a structured troubleshooting methodology:
+### 🔄 Routing & SSH Troubleshooting Flow
 
-**Connectivity Test**  
-↓  
-**Identify the Failed Destination**  
-↓  
-**Analyze Routing Information**  
-↓  
-**Identify Missing Forwarding Path**  
-↓  
-**Correct the Routing Configuration**  
-↓  
-**Retest Connectivity**  
-↓  
-**Verify SSH Management**
+```text
+┌──────────────────────────────┐
+│      Connectivity Test       │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Identify Failed Destination  │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Analyze Routing Information   │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Identify Missing Forwarding  │
+│            Path              │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│ Correct Routing Configuration│
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│      Retest Connectivity      │
+└──────────────┬───────────────┘
+               ↓
+┌──────────────────────────────┐
+│     Verify SSH Management     │
+└──────────────────────────────┘
+```
 
-This approach demonstrates the use of a systematic troubleshooting
-process rather than making configuration changes without first identifying
-the cause of the problem.
-
----
+**Troubleshooting Sequence:**
+`Connectivity → Destination → Routing Table → Forwarding Path → Configuration → Rete
 
 ## 🏁 Final Outcome
 
