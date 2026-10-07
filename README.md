@@ -22,7 +22,7 @@
   * [🔹 Phase 4 — SSH-Only Secure Remote Management](#-phase-4--ssh-only-secure-remote-management)
   * [🔧 Phase 5 — Network Troubleshooting & Verification](#-phase-5--network-troubleshooting--verification)
 
-    * [🛠️ Troubleshooting Case 1 — DHCP Relay Failure](#️-troubleshooting-case-1--dhcp-relay-failure)
+    * [🛠️ Troubleshooting Case 1 — DHCP Relay Failure](#-troubleshooting-case-1--dhcp-relay-failure)
     * [🛠️ Troubleshooting Case 2 — Diagnosing Reachability and Validating Network Connectivity](#️-troubleshooting-case-2--diagnosing-reachability-and-validating-network-connectivity)
 * [🧠 Key Learning](#-key-learning)
 
