@@ -372,11 +372,11 @@ Successful replies confirm that **PC3 can communicate with PC1 across different 
 
 <br>
 <br>
-### 📡 2.2 Wireshark — ICMP Packet Capture & Analysis
+**### 📡 2.2 Wireshark — ICMP Packet Capture & Analysis**
 
 #### 🎯 Objective
 
-Capture and analyze **ICMP traffic** using Wireshark to verify end-to-end connectivity between **PC3 (`20.1.1.10`)** and **PC1 (`10.1.1.10`)** across different LAN networks.
+Capture and analyze **ICMP traffic** using Wireshark to verify end-to-end connectivity between PC3 (`20.1.1.10`) and PC1 (`10.1.1.10`) across different LAN networks.
 
 #### ⚙️ Packet Capture & Analysis
 
@@ -390,11 +390,12 @@ icmp
 
 #### 📸 Wireshark Packet Capture
 
-<img width="1895" height="817" alt="Wireshark ICMP Packet Capture" src="YOUR_ICMP_SCREENSHOT_URL" />
+<!-- Add your Wireshark ICMP screenshot here -->
 
 <br>
 
 > **Packet Analysis:** The captured packets confirm ICMP communication between PC3 and PC1 and provide packet-level verification of end-to-end connectivity across different LAN networks.
+
 
 <br>
 <br>
