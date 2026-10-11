@@ -372,7 +372,8 @@ Successful replies confirm that **PC3 can communicate with PC1 across different 
 
 <br>
 <br>
-**### 📡 2.2 Wireshark — ICMP Packet Capture & Analysis**
+### 📡 2.2 Wireshark — ICMP Packet Capture & Analysis
+
 
 #### 🎯 Objective
 
