@@ -1007,7 +1007,7 @@ This confirms successful SSH access from SW2 to R4.
 
 <br>
 <br>
----
+
 ### 📡 4.7 Wireshark — SSH Packet Capture & Analysis
 
 #### 🎯 Objective
