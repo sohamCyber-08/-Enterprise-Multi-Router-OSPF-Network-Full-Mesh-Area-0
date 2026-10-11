@@ -148,6 +148,7 @@ show ip ospf
 
 ---
 
+
 ### 📍 1.2 R2 — Interface & OSPF Configuration
 
 #### 🎯 Objective
@@ -648,7 +649,8 @@ After receiving their IP addresses through DHCP, verify connectivity between the
 
 <br>
 
-
+<br>
+<br>
 
 📡 3.8 Wireshark — DHCP Packet Capture & Analysis
 🎯 Objective
@@ -669,7 +671,8 @@ dhcp
 <br>
 
 Packet Analysis: The captured packets help verify the DHCP DORA process and provide packet-level verification of communication between DHCP clients, relay agents, and the centralized DHCP server.
-
+<br>
+<br>
 
 ### 🔄 Phase 3 — DHCP Flow
 
