@@ -366,11 +366,43 @@ ping 10.1.1.10
 
 Successful replies confirm that **PC3 can communicate with PC1 across different IP networks through the OSPF-routed topology**.
 
+
+
+
+
+<br>
+<br>
+📡 2.2 Wireshark — ICMP Packet Capture & Analysis
+🎯 Objective
+
+Capture and analyze ICMP traffic using Wireshark to verify end-to-end connectivity between PC3 (20.1.1.10) and PC1 (10.1.1.10) across the OSPF-routed network.
+
+⚙️ Packet Capture & Analysis
+
+Wireshark was used to capture ICMP traffic on the network and analyze the exchanged packets. This provides packet-level verification of end-to-end connectivity between different LANs.
+
+Wireshark Display Filter
+
+icmp
+📸 Wireshark Packet Capture
+
+<img width="1662" height="472" alt="Screenshot 2026-10-11 122710" src="https://github.com/user-attachments/assets/ae10087d-b7ba-497b-8334-ef439059b0aa" />
+
+
+<br>
+
+Packet Analysis: The captured packets verify ICMP communication between different LANs and provide packet-level verification of end-to-end connectivity through the OSPF-routed network.
+<br>
+<br>
+
 ### 🖥️ PC3 → PC1 Test Result
 
 |        Source       |     Destination     | Protocol |    Result    |
 | :-----------------: | :-----------------: | :------: | :----------: |
 | **PC3 `20.1.1.10`** | **PC1 `10.1.1.10`** | **ICMP** | ✅ Successful |
+
+
+
 
 ### 🔄 Phase 2 — Connectivity Flow
 
@@ -388,6 +420,9 @@ flowchart TD
     J --> K["ICMP Echo Reply"]
     K --> L["Successful End-to-End Connectivity"]
 ```
+
+
+
 
 ---
 
