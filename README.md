@@ -372,26 +372,30 @@ Successful replies confirm that **PC3 can communicate with PC1 across different 
 
 <br>
 <br>
-📡 2.2 Wireshark — ICMP Packet Capture & Analysis
-🎯 Objective
+### 📡 2.2 Wireshark — ICMP Packet Capture & Analysis
 
-Capture and analyze ICMP traffic using Wireshark to verify end-to-end connectivity between PC3 (20.1.1.10) and PC1 (10.1.1.10) across the OSPF-routed network.
+#### 🎯 Objective
 
-⚙️ Packet Capture & Analysis
+Capture and analyze **ICMP traffic** using Wireshark to verify end-to-end connectivity between **PC3 (`20.1.1.10`)** and **PC1 (`10.1.1.10`)** across different LAN networks.
 
-Wireshark was used to capture ICMP traffic on the network and analyze the exchanged packets. This provides packet-level verification of end-to-end connectivity between different LANs.
+#### ⚙️ Packet Capture & Analysis
 
-Wireshark Display Filter
+Wireshark was used to capture ICMP traffic on the inter-router link and analyze the exchanged packets. This provides packet-level verification of end-to-end connectivity through the OSPF-routed network.
 
+**Wireshark Display Filter**
+
+```text
 icmp
-📸 Wireshark Packet Capture
+```
 
-<img width="1662" height="472" alt="Screenshot 2026-10-11 122710" src="https://github.com/user-attachments/assets/ae10087d-b7ba-497b-8334-ef439059b0aa" />
+#### 📸 Wireshark Packet Capture
 
+<img width="1895" height="817" alt="Wireshark ICMP Packet Capture" src="YOUR_ICMP_SCREENSHOT_URL" />
 
 <br>
 
-Packet Analysis: The captured packets verify ICMP communication between different LANs and provide packet-level verification of end-to-end connectivity through the OSPF-routed network.
+> **Packet Analysis:** The captured packets confirm ICMP communication between PC3 and PC1 and provide packet-level verification of end-to-end connectivity across different LAN networks.
+
 <br>
 <br>
 
