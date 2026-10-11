@@ -392,7 +392,7 @@ icmp
 
 #### 📸 Wireshark Packet Capture
 
-<!-- Add your Wireshark ICMP screenshot here -->
+<img width="1662" height="472" alt="Screenshot 2026-10-11 122710" src="https://github.com/user-attachments/assets/d73729a7-c9b4-473d-b9a1-726a66e94030" />
 
 <br>
 
@@ -666,7 +666,8 @@ Wireshark Display Filter
 dhcp
 📸 Wireshark Packet Capture
 
-<img width="1768" height="666" alt="Screenshot 2026-10-05 014310" src="https://github.com/user-attachments/assets/0500e1f7-c894-467e-aaa2-47df84fa87c6" />
+<img width="1768" height="666" alt="Screenshot 2026-10-05 014310" src="https://github.com/user-attachments/assets/fd92cb87-e07f-4f99-b4b1-b1fdda7b1593" />
+
 
 <br>
 
@@ -894,25 +895,7 @@ Successful login to each router confirms:
 ---
 <br>
 <br>
-📡 4.7 Wireshark — SSH Packet Capture & Analysis
-🎯 Objective
 
-Capture and analyze SSH traffic using Wireshark to verify secure remote management communication between SW2 and routers R1, R2, R3, and R4.
-
-⚙️ Packet Capture & Analysis
-
-Wireshark was used to capture SSH traffic on the network and analyze the exchanged packets. This provides packet-level verification of SSH connection establishment and encrypted communication during remote router management.
-
-Wireshark Display Filter
-
-ssh
-📸 Wireshark Packet Capture
-
-<!-- Add your SSH screenshot here -->
-
-<br>
-
-Packet Analysis: The captured packets provide packet-level visibility into SSH connection establishment and encrypted communication used for secure remote management of network devices.
 <br>
 <br>
 
@@ -1020,7 +1003,28 @@ This confirms successful SSH access from SW2 to R4.
 
 <br>
 <br>
+📡 4.7 Wireshark — SSH Packet Capture & Analysis
+🎯 Objective
 
+Capture and analyze SSH traffic using Wireshark to verify secure remote management communication between SW2 and routers R1, R2, R3, and R4.
+
+⚙️ Packet Capture & Analysis
+
+Wireshark was used to capture SSH traffic on the network and analyze the exchanged packets. This provides packet-level verification of SSH connection establishment and encrypted communication during remote router management.
+
+Wireshark Display Filter
+
+ssh
+📸 Wireshark Packet Capture
+
+
+<br>
+<img width="1911" height="1000" alt="Screenshot 2026-10-05 014646" src="https://github.com/user-attachments/assets/43751519-ccf7-4388-814a-75e3a548863b" />
+<br>
+
+<br>
+
+Packet Analysis: The captured packets provide packet-level visibility into SSH connection establishment and encrypted communication used for secure remote management of network devices.
 ---
 
 # 📊 SSH Connectivity Verification
