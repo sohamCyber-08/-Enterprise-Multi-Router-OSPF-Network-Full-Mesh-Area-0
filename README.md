@@ -375,6 +375,7 @@ Successful replies confirm that **PC3 can communicate with PC1 across different 
 <br>
 
 ---
+
 ### 📡 2.2 Wireshark — ICMP Packet Capture & Analysis
 
 
@@ -1011,29 +1012,36 @@ This confirms successful SSH access from SW2 to R4.
 
 <br>
 <br>
-📡 4.7 Wireshark — SSH Packet Capture & Analysis
-🎯 Objective
+---
+### 📡 4.7 Wireshark — SSH Packet Capture & Analysis
 
-Capture and analyze SSH traffic using Wireshark to verify secure remote management communication between SW2 and routers R1, R2, R3, and R4.
+#### 🎯 Objective
 
-⚙️ Packet Capture & Analysis
+Capture and analyze **SSH traffic** using Wireshark to verify secure remote management communication between **SW2 and routers R1, R2, R3, and R4**.
+
+#### ⚙️ Packet Capture & Analysis
 
 Wireshark was used to capture SSH traffic on the network and analyze the exchanged packets. This provides packet-level verification of SSH connection establishment and encrypted communication during remote router management.
 
-Wireshark Display Filter
+**Wireshark Display Filter**
 
+```text
 ssh
-📸 Wireshark Packet Capture
+```
 
+#### 📸 Wireshark Packet Capture
 
 <br>
+
 <img width="1911" height="1000" alt="Screenshot 2026-10-05 014646" src="https://github.com/user-attachments/assets/43751519-ccf7-4388-814a-75e3a548863b" />
-<br>
 
 <br>
+<br>
 
-Packet Analysis: The captured packets provide packet-level visibility into SSH connection establishment and encrypted communication used for secure remote management of network devices.
+> **Packet Analysis:** The captured packets provide packet-level visibility into SSH connection establishment and encrypted communication used for secure remote management of network devices.
+
 ---
+
 
 # 📊 SSH Connectivity Verification
 
