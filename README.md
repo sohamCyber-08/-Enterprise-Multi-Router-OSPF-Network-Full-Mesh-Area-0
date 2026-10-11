@@ -648,6 +648,29 @@ After receiving their IP addresses through DHCP, verify connectivity between the
 
 <br>
 
+
+
+📡 3.8 Wireshark — DHCP Packet Capture & Analysis
+🎯 Objective
+
+Capture and analyze DHCP traffic using Wireshark to verify the DHCP DORA process and dynamic IPv4 address allocation through the centralized DHCP server (30.1.1.100).
+
+⚙️ Packet Capture & Analysis
+
+Wireshark was used to capture DHCP traffic on the network and analyze the exchanged packets. This provides packet-level verification of DHCP Discover, Offer, Request, and ACK messages between clients, relay agents, and the centralized DHCP server.
+
+Wireshark Display Filter
+
+dhcp
+📸 Wireshark Packet Capture
+
+<img width="1768" height="666" alt="Screenshot 2026-10-05 014310" src="https://github.com/user-attachments/assets/0500e1f7-c894-467e-aaa2-47df84fa87c6" />
+
+<br>
+
+Packet Analysis: The captured packets help verify the DHCP DORA process and provide packet-level verification of communication between DHCP clients, relay agents, and the centralized DHCP server.
+
+
 ### 🔄 Phase 3 — DHCP Flow
 
 ```mermaid
@@ -681,9 +704,8 @@ Enable **SSH version 2** on R1 to provide secure and encrypted remote management
 Configure local user authentication and restrict remote VTY access to **SSH only**.
 
 <br>
+
 <img width="1417" height="565" alt="Screenshot 2026-10-01 192354" src="https://github.com/user-attachments/assets/d8e96e6b-d8c0-4b35-9a3a-25ae62844f6f" />
-
-
 
 <br>
 
@@ -692,11 +714,14 @@ Configure local user authentication and restrict remote VTY access to **SSH only
 Verify that SSH is enabled and the VTY lines are configured for SSH-only access.
 
 <br>
+
 <img width="1331" height="332" alt="Screenshot 2026-10-01 192413" src="https://github.com/user-attachments/assets/f708d11b-8dc9-407e-9781-6f5c09246697" />
 
-
+<br>
 
 ---
+
+
 
 ## 📍 4.2 SSH Configuration on R2
 
@@ -864,6 +889,29 @@ Successful login to each router confirms:
 * Remote management capability
 
 ---
+<br>
+<br>
+📡 4.7 Wireshark — SSH Packet Capture & Analysis
+🎯 Objective
+
+Capture and analyze SSH traffic using Wireshark to verify secure remote management communication between SW2 and routers R1, R2, R3, and R4.
+
+⚙️ Packet Capture & Analysis
+
+Wireshark was used to capture SSH traffic on the network and analyze the exchanged packets. This provides packet-level verification of SSH connection establishment and encrypted communication during remote router management.
+
+Wireshark Display Filter
+
+ssh
+📸 Wireshark Packet Capture
+
+<!-- Add your SSH screenshot here -->
+
+<br>
+
+Packet Analysis: The captured packets provide packet-level visibility into SSH connection establishment and encrypted communication used for secure remote management of network devices.
+<br>
+<br>
 
 ### 🔹 R1 SSH Verification
 
