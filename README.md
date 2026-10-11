@@ -367,11 +367,6 @@ ping 10.1.1.10
 
 Successful replies confirm that **PC3 can communicate with PC1 across different IP networks through the OSPF-routed topology**.
 
-
-
-
-
-<br>
 <br>
 
 ---
