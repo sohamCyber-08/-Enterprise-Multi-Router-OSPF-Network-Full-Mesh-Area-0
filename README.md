@@ -653,29 +653,35 @@ After receiving their IP addresses through DHCP, verify connectivity between the
 
 <br>
 <br>
+---
 
-📡 3.8 Wireshark — DHCP Packet Capture & Analysis
-🎯 Objective
+### 📡 3.8 Wireshark — DHCP Packet Capture & Analysis
 
-Capture and analyze DHCP traffic using Wireshark to verify the DHCP DORA process and dynamic IPv4 address allocation through the centralized DHCP server (30.1.1.100).
+#### 🎯 Objective
 
-⚙️ Packet Capture & Analysis
+Capture and analyze **DHCP traffic** using Wireshark to verify the DHCP DORA process and dynamic IPv4 address allocation through the centralized DHCP server (`30.1.1.100`).
+
+#### ⚙️ Packet Capture & Analysis
 
 Wireshark was used to capture DHCP traffic on the network and analyze the exchanged packets. This provides packet-level verification of DHCP Discover, Offer, Request, and ACK messages between clients, relay agents, and the centralized DHCP server.
 
-Wireshark Display Filter
+**Wireshark Display Filter**
 
+```text
 dhcp
-📸 Wireshark Packet Capture
+```
+
+#### 📸 Wireshark Packet Capture
 
 <img width="1768" height="666" alt="Screenshot 2026-10-05 014310" src="https://github.com/user-attachments/assets/fd92cb87-e07f-4f99-b4b1-b1fdda7b1593" />
 
-
 <br>
 
-Packet Analysis: The captured packets help verify the DHCP DORA process and provide packet-level verification of communication between DHCP clients, relay agents, and the centralized DHCP server.
+> **Packet Analysis:** The captured packets help verify the DHCP DORA process and provide packet-level verification of communication between DHCP clients, relay agents, and the centralized DHCP server.
+
 <br>
 <br>
+
 
 ### 🔄 Phase 3 — DHCP Flow
 
