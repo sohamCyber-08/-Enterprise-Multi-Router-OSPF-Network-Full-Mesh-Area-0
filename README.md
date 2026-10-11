@@ -268,13 +268,6 @@ Wireshark was used to capture OSPF traffic on the inter-router link and analyze 
 ospf
 ```
 
-#### 🔍 Verification
-
-* OSPF Hello packets exchanged between neighboring routers
-* OSPF Router IDs visible in captured packets
-* OSPF Area 0 information
-* OSPF neighbor communication
-* OSPF packet types and protocol details
 
 #### 📸 Wireshark Packet Capture
 
